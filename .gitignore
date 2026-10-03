@@ -3,3 +3,7 @@
 node_modules/
 .DS_Store
 .vercel
+
+# CMS source (Google Apps Script) — deploy bằng clasp, không đưa lên repo (gas/README.md)
+gas/
+__pycache__/

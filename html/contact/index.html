@@ -64,23 +64,25 @@
       </div>
       <div class="contact__form-col">
         <h3 class="contact__title">LIÊN HỆ VỚI CHÚNG TÔI</h3>
-        <form class="contact__form" id="contact-form" data-demo-form>
-          <input type="text" placeholder="TÊN" required>
-          <input type="email" placeholder="EMAIL" required>
-          <input type="text" placeholder="SỐ ĐIỆN THOẠI">
-          <input type="text" placeholder="MÃ ĐƠN HÀNG">
-          <select>
+        <form class="contact__form" id="contact-form" novalidate>
+          <input type="text" name="name" placeholder="TÊN" autocomplete="name" required>
+          <input type="email" name="email" placeholder="EMAIL" autocomplete="email" required>
+          <input type="tel" name="phone" placeholder="SỐ ĐIỆN THOẠI" autocomplete="tel">
+          <input type="text" name="order_code" placeholder="MÃ ĐƠN HÀNG">
+          <!-- honeypot: real visitors never see or fill this -->
+          <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="contact__hp">
+          <select name="topic">
             <option value="">LIÊN HỆ VỀ</option>
             <option>Tư vấn size</option>
             <option>Đơn hàng</option>
             <option>Hợp tác</option>
             <option>Khác</option>
           </select>
-          <textarea placeholder="Lời nhắn" required></textarea>
+          <textarea name="message" placeholder="Lời nhắn" required></textarea>
         </form>
         <div class="contact__send">
-          <button type="submit" form="contact-form">Gửi liên hệ</button>
-          <p class="contact__msg" hidden>Đây là bản demo — form không gửi dữ liệu đi đâu.</p>
+          <button type="submit" form="contact-form" id="contact-submit">Gửi liên hệ</button>
+          <p class="contact__msg" role="status" hidden></p>
         </div>
       </div>
     </div>

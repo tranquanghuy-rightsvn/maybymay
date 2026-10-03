@@ -5,16 +5,23 @@ Writes into html/:
   product/<handle>/index.html     one page per product
   collection/<handle>/index.html  one page per collection
   page/<handle>/index.html        info pages (policies, size guide, about)
-  blog/...                        blog list, category pages and posts (data/posts.json)
+  blog/...                        blog list, category pages and posts
   index.html                      fills the home carousels between <!-- build:<collection> --> markers
   js/search-index.js              product list used by the search page
   sitemap.xml
+
+Data (written by the CMS in gas/, see GAS.md):
+  data/products.json + data/products/<slug>/detail.json   products
+  data/blog.json + data/blog/<slug>/detail.json           blog posts
+  data/pages.json                                          info pages (edited by hand)
 
 Run after editing data/:  python3 scripts/build.py
 """
 import json
 import re
 import shutil
+import unicodedata
+import zlib
 from html import escape
 from pathlib import Path
 
@@ -25,10 +32,100 @@ SITE = "https://maybymay.vn"
 # "Cùng bộ sưu tập" uses the first of these that holds the product (and another product)
 RELATED_ORDER = ["dong-bo", "mua-he"]
 
-products = json.loads((DATA / "products.json").read_text(encoding="utf-8"))
-collections = json.loads((DATA / "collections.json").read_text(encoding="utf-8"))
-pages = json.loads((DATA / "pages.json").read_text(encoding="utf-8"))
-blog = json.loads((DATA / "posts.json").read_text(encoding="utf-8"))
+# The two fixed collections a product can belong to (gas/Code.js has the same list)
+COLLECTIONS = {
+    "mua-he": "Sản phẩm mùa hè",
+    "dong-bo": "Sản phẩm đồng bộ",
+}
+# Fixed blog categories (gas/Code.js has the same list)
+BLOG_CATEGORIES = [
+    {"handle": "meo-phoi-do", "title": "Mẹo phối đồ",
+     "description": "Gợi ý phối váy, áo, quần và set đồ cho từng dịp: đi làm, đi chơi, dạo phố."},
+    {"handle": "tin-tuc-thoi-trang", "title": "Tin tức thời trang",
+     "description": "Xu hướng, chất liệu và gam màu đang được yêu thích, cùng tin mới từ May By Mây."},
+    {"handle": "cham-soc-trang-phuc", "title": "Chăm sóc trang phục",
+     "description": "Cách giặt, phơi, ủi và bảo quản để trang phục luôn bền đẹp như mới."},
+]
+
+
+def read_json(path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def by_order(index):
+    return sorted(index, key=lambda x: x.get("order") if isinstance(x.get("order"), (int, float)) else 1e9)
+
+
+def sku_part(text):
+    """"Trắng kem" -> "TRANGKEM" (for SKUs of products with several colours)."""
+    text = unicodedata.normalize("NFD", text.replace("đ", "d").replace("Đ", "D"))
+    return re.sub(r"[^A-Za-z0-9]", "", "".join(c for c in text if unicodedata.category(c) != "Mn")).upper()
+
+
+def variant_id(slug, color, size):
+    """Stable numeric id (the cart stores items by it)."""
+    return zlib.crc32(f"{slug}|{color}|{size}".encode("utf-8")) & 0x7FFFFFFF
+
+
+def load_product(meta):
+    """CMS record (data/products/<slug>/detail.json) -> the shape the page generators use."""
+    d = read_json(DATA / "products" / meta["slug"] / "detail.json")
+    slug = d["slug"]
+    images = [f"/images/products/{slug}/{f}" for f in d["images"]]
+    colors = d["colors"]
+    image_of = {c["name"]: f"/images/products/{slug}/{c['image']}" for c in colors if c.get("image") in d["images"]}
+    price_old = d.get("price_old", 0)
+    variants = [
+        {"id": variant_id(slug, c["name"], size), "title": f"{c['name']} / {size}", "options": [c["name"], size],
+         "sku": f"{d['code']}-{sku_part(c['name'])}-{size}" if len(colors) > 1 else f"{d['code']}-{size}", "price": d["price"], "compare": price_old if price_old > d["price"] else 0,
+         "available": d["available"], "image": image_of.get(c["name"], images[0])}
+        for c in colors for size in d["sizes"]
+    ]
+    return {
+        "handle": slug,
+        "title": f"{d['title']} | {d['code']}",
+        "code": d["code"],
+        "type": d.get("type", ""),
+        "collection": d["collection"],
+        "is_new": d.get("is_new", False),
+        "featured": d.get("featured", False),
+        "available": d["available"],
+        "images": images,
+        "options": [{"name": "Màu sắc", "values": [c["name"] for c in colors]}, {"name": "Kích thước", "values": d["sizes"]}],
+        "colorIndex": 0,
+        "swatches": [{"name": c["name"], "chip": "", **({"css": c["css"]} if c.get("css") else {})} for c in colors],
+        "content": d.get("content", ""),
+        "seo_title": d.get("seo_title", ""),
+        "seo_description": d.get("seo_description", ""),
+        "variants": variants,
+    }
+
+
+def load_post(meta):
+    d = read_json(DATA / "blog" / meta["slug"] / "detail.json")
+    updated = d.get("updated_at", "")[:10]
+    return {
+        "slug": d["slug"],
+        "category": d["category"],
+        "title": d["title"],
+        "date": d["date"],
+        "updated": max(updated, d["date"]),
+        "cover": "/" + d["cover"].lstrip("/"),
+        "excerpt": d["description"],
+        "html": d.get("content", ""),
+        "seo_title": d.get("seo_title", ""),
+        "seo_description": d.get("seo_description", ""),
+    }
+
+
+products = [load_product(m) for m in by_order(read_json(DATA / "products.json"))]
+collections = {"all": {"handle": "all", "title": "Tất cả sản phẩm", "products": [p["handle"] for p in products]},
+               "san-pham-moi": {"handle": "san-pham-moi", "title": "Sản phẩm mới",
+                                "products": [p["handle"] for p in products if p["is_new"]]}}
+for _h, _t in COLLECTIONS.items():
+    collections[_h] = {"handle": _h, "title": _t, "products": [p["handle"] for p in products if p["collection"] == _h]}
+pages = read_json(DATA / "pages.json")
+blog = {"categories": BLOG_CATEGORIES, "posts": [load_post(m) for m in read_json(DATA / "blog.json")]}
 shared = pages.pop("_shared")
 by_handle = {p["handle"]: p for p in products}
 
@@ -269,12 +366,9 @@ def popup(name, cls, body):
     )
 
 
-def specs_html(p):
-    out = []
-    for line in p.get("specs", []):
-        is_heading = re.fullmatch(r"[A-ZÀ-Ỹ\s]+", line) and len(line) < 40
-        out.append(f"<h3>{esc(line)}</h3>" if is_heading else f"<p>{esc(line)}</p>")
-    return "".join(out) or "<p>Đang cập nhật.</p>"
+def info_html(p):
+    """"Thông tin sản phẩm" popup: the product content from the CMS."""
+    return p["content"].strip() or "<p>Đang cập nhật.</p>"
 
 
 # colour name -> CSS background for the round colour picker (a swatch may override it with "css")
@@ -333,7 +427,7 @@ def product_page(p):
         for s in p["swatches"]:
             bg = f"background:{color_css(s)}"
             active = " is-active" if s["name"] == color else ""
-            chips += f'<span class="sw-item sw-item--color{active}" data-color="{esc(s["name"])}" title="{esc(s["name"])}"><span style="{bg}"></span></span>'
+            chips += f'<span class="sw-item sw-item--color{active}" data-color="{esc(s["name"])}" title="{esc(s["name"])}"><span style="{esc(bg)}"></span></span>'
         color_line = (
             f'<div class="sw-line sw-line--color"><div class="sw-title"><b>{esc(p["options"][color_idx]["name"])}: <span class="js-color-name">{esc(color)}</span></b>'
             f'<p>Màu sản phẩm thật giống hình ảnh đến 99%</p></div><div class="sw-select">{chips}</div></div>'
@@ -392,14 +486,14 @@ def product_page(p):
         + carousel_section("CÙNG BỘ SƯU TẬP", same)
         + carousel_section("CÓ THỂ BẠN CŨNG THÍCH", others)
         + popup("size", "side-popup--info", shared["size"])
-        + popup("info", "side-popup--info", specs_html(p))
+        + popup("info", "side-popup--info", info_html(p))
         + popup("ship", "side-popup--ship", shared["shipping"])
         + "</div>\n"
         f'  <script type="application/json" id="product-data">{product_json}</script>'
     )
     color_text = f" Màu {color}." if color else ""
-    desc = f"{p['title']} - {money(price_of(p))}.{color_text} Size {' '.join(p['options'][size_idx]['values']) if size_idx >= 0 else ''}. Hotline 0327 666 248."
-    col_crumb = next((c for h, c in collections.items() if h in ("dong-bo", "mua-he") and p["handle"] in c["products"]), collections["all"])
+    desc = p["seo_description"] or f"{p['title']} - {money(price_of(p))}.{color_text} Size {' '.join(p['options'][size_idx]['values']) if size_idx >= 0 else ''}. Hotline 0327 666 248."
+    col_crumb = collections[p["collection"]]
     product_ld = {
         "@type": "Product",
         "@id": absu(product_url(p["handle"])) + "#product",
@@ -429,7 +523,7 @@ def product_page(p):
         },
     }
     crumbs = breadcrumb_ld([(col_crumb["title"], collection_url(col_crumb["handle"])), (p["title"], product_url(p["handle"]))])
-    return shell(p["title"] + " – May By Mây", "page-inner page-product", main, ["/js/pages/product.js"],
+    return shell(p["seo_title"] or p["title"] + " – May By Mây", "page-inner page-product", main, ["/js/pages/product.js"],
                  description=desc, canonical=product_url(p["handle"]), image=p["images"][0], og_type="product",
                  og_extra=(("product:price:amount", str(price_of(p))), ("product:price:currency", "VND"),
                            ("product:availability", "in stock"), ("product:brand", BRAND)),
@@ -556,8 +650,7 @@ def blog_list_page(active, posts_, title, intro):
 def post_page(post):
     cat = blog_cats[post["category"]]
     others = [x for x in blog_posts if x["slug"] != post["slug"]][:3]
-    by_code = {p["code"]: p for p in products}
-    featured = [by_code[c] for c in blog.get("featured", []) if c in by_code]   # same list under every post
+    featured = [p for p in products if p["featured"]][:8]   # same list under every post (tick "Nổi bật ở Blog")
     related = ""
     if featured:
         related += (
@@ -588,7 +681,7 @@ def post_page(post):
         "description": post["excerpt"],
         "image": [absu(post["cover"])],
         "datePublished": post["date"],
-        "dateModified": post.get("updated", post["date"]),
+        "dateModified": post["updated"],
         "articleSection": cat["title"],
         "inLanguage": "vi-VN",
         "author": {"@type": "Organization", "name": BRAND, "url": SITE + "/"},
@@ -596,8 +689,8 @@ def post_page(post):
         "mainEntityOfPage": absu(blog_url(post["slug"])),
     }
     crumbs = breadcrumb_ld([("Blog", blog_url()), (cat["title"], blog_cat_url(cat["handle"])), (post["title"], blog_url(post["slug"]))])
-    return shell(post["title"] + " – Blog May By Mây", "page-inner page-post", main, [],
-                 description=post["excerpt"], canonical=blog_url(post["slug"]), image=post["cover"], og_type="article",
+    return shell(post["seo_title"] or post["title"] + " – Blog May By Mây", "page-inner page-post", main, [],
+                 description=post["seo_description"] or post["excerpt"], canonical=blog_url(post["slug"]), image=post["cover"], og_type="article",
                  og_extra=(("article:published_time", post["date"]), ("article:section", cat["title"])),
                  jsonld=(posting, crumbs))
 
@@ -661,7 +754,7 @@ for rel, meta in STATIC_PAGES.items():
         raise SystemExit(f"{rel}: build:head markers not found")
     write(f, text)
 
-write(OUT / "robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+write(OUT / "robots.txt", f"User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: {SITE}/sitemap.xml\n")
 
 # Vietnam provinces + wards (2-level, 34 provinces) for the checkout address pickers,
 # shipped as a plain script so the checkout page needs no fetch()

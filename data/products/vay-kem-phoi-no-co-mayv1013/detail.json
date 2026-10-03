@@ -1,0 +1,32 @@
+{
+  "id": "29c4b35c-fe52-4742-8424-56108b3881a8",
+  "slug": "vay-kem-phoi-no-co-mayv1013",
+  "title": "Váy kem phối nơ cổ",
+  "code": "MAYV1013",
+  "collection": "mua-he",
+  "is_new": true,
+  "featured": false,
+  "available": true,
+  "type": "Váy",
+  "price": 695000,
+  "colors": [
+    {
+      "name": "Trắng Kem"
+    }
+  ],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "images": [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "4.jpg"
+  ],
+  "content": "<h3>THÔNG TIN SẢN PHẨM</h3><p>- Mã sản phẩm: MAYV1013</p><p>- Màu: Trắng Kem</p><p>- Size: S M L XL</p><p>- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây</p><p>- Hotline tư vấn size: 0327 666 248</p>",
+  "created_at": "2026-10-01T00:00:00.000Z",
+  "updated_at": "2026-10-01T00:00:00.000Z"
+}

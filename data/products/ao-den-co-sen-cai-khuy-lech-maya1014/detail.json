@@ -1,0 +1,32 @@
+{
+  "id": "711da59d-a276-4931-a1db-be773a20787b",
+  "slug": "ao-den-co-sen-cai-khuy-lech-maya1014",
+  "title": "Áo đen cổ sen cài khuy lệch",
+  "code": "MAYA1014",
+  "collection": "mua-he",
+  "is_new": true,
+  "featured": false,
+  "available": true,
+  "type": "Áo",
+  "price": 495000,
+  "colors": [
+    {
+      "name": "Đen"
+    }
+  ],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "images": [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "4.jpg"
+  ],
+  "content": "<h3>THÔNG TIN SẢN PHẨM</h3><p>- Mã sản phẩm: MAYA1014</p><p>- Màu: Đen</p><p>- Size: S M L XL</p><p>- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây</p><p>- Hotline tư vấn size: 0327 666 248</p>",
+  "created_at": "2026-10-01T00:00:00.000Z",
+  "updated_at": "2026-10-01T00:00:00.000Z"
+}

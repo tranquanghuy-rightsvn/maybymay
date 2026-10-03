@@ -1,0 +1,31 @@
+{
+  "id": "b6746657-052b-4d41-a4e2-9da2b5527485",
+  "slug": "vay-hoa-do-vai-beo-mayv1011",
+  "title": "Váy hoa đỏ vai bèo",
+  "code": "MAYV1011",
+  "collection": "mua-he",
+  "is_new": true,
+  "featured": true,
+  "available": true,
+  "type": "Váy",
+  "price": 595000,
+  "colors": [
+    {
+      "name": "Hoa"
+    }
+  ],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "images": [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg"
+  ],
+  "content": "<h3>THÔNG TIN SẢN PHẨM</h3><p>- Mã sản phẩm: MAYV1011</p><p>- Màu: Hoa</p><p>- Size: S M L XL</p><p>- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây</p><p>- Hotline tư vấn size: 0327 666 248</p>",
+  "created_at": "2026-10-01T00:00:00.000Z",
+  "updated_at": "2026-10-01T00:00:00.000Z"
+}

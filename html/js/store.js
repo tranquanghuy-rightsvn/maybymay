@@ -4,6 +4,9 @@
 
   var CART_KEY = "maybymay_cart";
   var FAV_KEY = "maybymay_wishlist";
+  // Order + contact forms are sent to the CMS (Google Apps Script web app ".../exec" URL, see gas/README.md).
+  // Empty = forms work but nothing is sent (the payload is logged to the console).
+  var API_URL = "https://script.google.com/macros/s/AKfycbwINJt4qzRwTwPcq42kGyyhx9OogtQNnu8KluJeTIRh0I1svdVRUTGpPF3vqB3ZbZkGGQ/exec";
 
   var routes = {
     home: function () { return "/"; },
@@ -30,6 +33,18 @@
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
+  }
+
+  /* ---------------- forms -> CMS ---------------- */
+  // text/plain avoids a CORS preflight (Google Apps Script cannot answer OPTIONS)
+  function post(data) {
+    if (!API_URL) {
+      if (window.console) console.info("API_URL chưa cấu hình — dữ liệu chưa được gửi đi:", data);
+      return Promise.resolve({ ok: true, notSent: true });
+    }
+    return fetch(API_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json(); })
+      .catch(function () { return { ok: false, error: "Không kết nối được máy chủ. Vui lòng thử lại hoặc gọi hotline 0327 666 248." }; });
   }
 
   /* ---------------- product card (search results, wishlist) ---------------- */
@@ -118,6 +133,7 @@
     money: money,
     param: param,
     esc: esc,
+    post: post,
     card: card,
     cart: cart,
     wishlist: wishlist

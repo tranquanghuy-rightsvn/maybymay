@@ -1,0 +1,32 @@
+{
+  "id": "981371be-b1b4-4f9a-9e9e-1f919ee9d14a",
+  "slug": "vay-hoa-nhi-vang-dang-dai-mayv1017",
+  "title": "Váy hoa nhí vàng dáng dài",
+  "code": "MAYV1017",
+  "collection": "mua-he",
+  "is_new": true,
+  "featured": true,
+  "available": true,
+  "type": "Váy",
+  "price": 685000,
+  "colors": [
+    {
+      "name": "Vàng"
+    }
+  ],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "images": [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "4.jpg"
+  ],
+  "content": "<h3>THÔNG TIN SẢN PHẨM</h3><p>- Mã sản phẩm: MAYV1017</p><p>- Màu: Vàng</p><p>- Size: S M L XL</p><p>- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây</p><p>- Hotline tư vấn size: 0327 666 248</p>",
+  "created_at": "2026-10-01T00:00:00.000Z",
+  "updated_at": "2026-10-01T00:00:00.000Z"
+}

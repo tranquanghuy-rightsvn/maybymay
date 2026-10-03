@@ -1,1979 +1,302 @@
 [
- {
-  "handle": "set-so-mi-ke-soc-vang-mays1020",
-  "title": "Set sơ mi kẻ sọc vàng | MAYS1020",
-  "code": "MAYS1020",
-  "type": "Đồng bộ",
-  "available": true,
-  "images": [
-   "/images/products/set-so-mi-ke-soc-vang-mays1020/1.jpg",
-   "/images/products/set-so-mi-ke-soc-vang-mays1020/2.jpg",
-   "/images/products/set-so-mi-ke-soc-vang-mays1020/3.jpg",
-   "/images/products/set-so-mi-ke-soc-vang-mays1020/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Vàng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Vàng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYS1020",
-   "- Màu: Vàng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 1,
-    "title": "Vàng / S",
-    "options": [
-     "Vàng",
-     "S"
-    ],
-    "sku": "MAYS1020-S",
+  {
+    "id": "f6a9c7b5-e77b-4ac7-9bad-bdb17560da9a",
+    "slug": "set-so-mi-ke-soc-vang-mays1020",
+    "title": "Set sơ mi kẻ sọc vàng",
+    "code": "MAYS1020",
+    "collection": "dong-bo",
+    "is_new": true,
+    "featured": false,
+    "available": true,
     "price": 625000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 1,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "f45537f3-e151-4e14-be9a-1dd35840031b",
+    "slug": "set-so-mi-trang-chan-vay-cai-khuy-mays1019",
+    "title": "Set sơ mi trắng chân váy cài khuy",
+    "code": "MAYS1019",
+    "collection": "dong-bo",
+    "is_new": true,
+    "featured": true,
     "available": true,
-    "image": "/images/products/set-so-mi-ke-soc-vang-mays1020/1.jpg"
-   },
-   {
-    "id": 2,
-    "title": "Vàng / M",
-    "options": [
-     "Vàng",
-     "M"
-    ],
-    "sku": "MAYS1020-M",
+    "price": 695000,
+    "cover_file": "1.jpg",
+    "order": 2,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "feedfa05-3f3e-45a5-977a-8e5118ee2597",
+    "slug": "ao-so-mi-trang-co-beo-maya1018",
+    "title": "Áo sơ mi trắng cổ bèo",
+    "code": "MAYA1018",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
+    "available": true,
+    "price": 495000,
+    "cover_file": "1.jpg",
+    "order": 3,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "981371be-b1b4-4f9a-9e9e-1f919ee9d14a",
+    "slug": "vay-hoa-nhi-vang-dang-dai-mayv1017",
+    "title": "Váy hoa nhí vàng dáng dài",
+    "code": "MAYV1017",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": true,
+    "available": true,
+    "price": 685000,
+    "cover_file": "1.jpg",
+    "order": 4,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "b57aa34d-f3f8-441c-a945-72397b66b7c7",
+    "slug": "vay-xanh-nhun-nguc-tay-bong-mayv1016",
+    "title": "Váy xanh nhún ngực tay bồng",
+    "code": "MAYV1016",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
+    "available": true,
+    "price": 685000,
+    "cover_file": "1.jpg",
+    "order": 5,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "28bb2ef3-7c3d-4f54-b00d-bee0e10596df",
+    "slug": "vay-ke-caro-xanh-cai-khuy-mayv1015",
+    "title": "Váy kẻ caro xanh cài khuy",
+    "code": "MAYV1015",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
+    "available": true,
+    "price": 595000,
+    "cover_file": "1.jpg",
+    "order": 6,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "711da59d-a276-4931-a1db-be773a20787b",
+    "slug": "ao-den-co-sen-cai-khuy-lech-maya1014",
+    "title": "Áo đen cổ sen cài khuy lệch",
+    "code": "MAYA1014",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
+    "available": true,
+    "price": 495000,
+    "cover_file": "1.jpg",
+    "order": 7,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "29c4b35c-fe52-4742-8424-56108b3881a8",
+    "slug": "vay-kem-phoi-no-co-mayv1013",
+    "title": "Váy kem phối nơ cổ",
+    "code": "MAYV1013",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
+    "available": true,
+    "price": 695000,
+    "cover_file": "1.jpg",
+    "order": 8,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "bcb4bd43-e929-4334-977a-5fbd7673164e",
+    "slug": "vay-ao-trang-chan-voan-hong-mayv1012",
+    "title": "Váy áo trắng chân voan hồng",
+    "code": "MAYV1012",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
+    "available": true,
     "price": 625000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 9,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "b6746657-052b-4d41-a4e2-9da2b5527485",
+    "slug": "vay-hoa-do-vai-beo-mayv1011",
+    "title": "Váy hoa đỏ vai bèo",
+    "code": "MAYV1011",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": true,
     "available": true,
-    "image": "/images/products/set-so-mi-ke-soc-vang-mays1020/1.jpg"
-   },
-   {
-    "id": 3,
-    "title": "Vàng / L",
-    "options": [
-     "Vàng",
-     "L"
-    ],
-    "sku": "MAYS1020-L",
-    "price": 625000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-so-mi-ke-soc-vang-mays1020/1.jpg"
-   },
-   {
-    "id": 4,
-    "title": "Vàng / XL",
-    "options": [
-     "Vàng",
-     "XL"
-    ],
-    "sku": "MAYS1020-XL",
-    "price": 625000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-so-mi-ke-soc-vang-mays1020/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "set-so-mi-trang-chan-vay-cai-khuy-mays1019",
-  "title": "Set sơ mi trắng chân váy cài khuy | MAYS1019",
-  "code": "MAYS1019",
-  "type": "Đồng bộ",
-  "available": true,
-  "images": [
-   "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/1.jpg",
-   "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/2.jpg",
-   "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/3.jpg",
-   "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYS1019",
-   "- Màu: Trắng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 5,
-    "title": "Trắng / S",
-    "options": [
-     "Trắng",
-     "S"
-    ],
-    "sku": "MAYS1019-S",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/1.jpg"
-   },
-   {
-    "id": 6,
-    "title": "Trắng / M",
-    "options": [
-     "Trắng",
-     "M"
-    ],
-    "sku": "MAYS1019-M",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/1.jpg"
-   },
-   {
-    "id": 7,
-    "title": "Trắng / L",
-    "options": [
-     "Trắng",
-     "L"
-    ],
-    "sku": "MAYS1019-L",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/1.jpg"
-   },
-   {
-    "id": 8,
-    "title": "Trắng / XL",
-    "options": [
-     "Trắng",
-     "XL"
-    ],
-    "sku": "MAYS1019-XL",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-so-mi-trang-chan-vay-cai-khuy-mays1019/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "ao-so-mi-trang-co-beo-maya1018",
-  "title": "Áo sơ mi trắng cổ bèo | MAYA1018",
-  "code": "MAYA1018",
-  "type": "Áo",
-  "available": true,
-  "images": [
-   "/images/products/ao-so-mi-trang-co-beo-maya1018/1.jpg",
-   "/images/products/ao-so-mi-trang-co-beo-maya1018/2.jpg",
-   "/images/products/ao-so-mi-trang-co-beo-maya1018/3.jpg",
-   "/images/products/ao-so-mi-trang-co-beo-maya1018/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYA1018",
-   "- Màu: Trắng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 9,
-    "title": "Trắng / S",
-    "options": [
-     "Trắng",
-     "S"
-    ],
-    "sku": "MAYA1018-S",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-so-mi-trang-co-beo-maya1018/1.jpg"
-   },
-   {
-    "id": 10,
-    "title": "Trắng / M",
-    "options": [
-     "Trắng",
-     "M"
-    ],
-    "sku": "MAYA1018-M",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-so-mi-trang-co-beo-maya1018/1.jpg"
-   },
-   {
-    "id": 11,
-    "title": "Trắng / L",
-    "options": [
-     "Trắng",
-     "L"
-    ],
-    "sku": "MAYA1018-L",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-so-mi-trang-co-beo-maya1018/1.jpg"
-   },
-   {
-    "id": 12,
-    "title": "Trắng / XL",
-    "options": [
-     "Trắng",
-     "XL"
-    ],
-    "sku": "MAYA1018-XL",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-so-mi-trang-co-beo-maya1018/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-hoa-nhi-vang-dang-dai-mayv1017",
-  "title": "Váy hoa nhí vàng dáng dài | MAYV1017",
-  "code": "MAYV1017",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/1.jpg",
-   "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/2.jpg",
-   "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/3.jpg",
-   "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Vàng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Vàng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1017",
-   "- Màu: Vàng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 13,
-    "title": "Vàng / S",
-    "options": [
-     "Vàng",
-     "S"
-    ],
-    "sku": "MAYV1017-S",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/1.jpg"
-   },
-   {
-    "id": 14,
-    "title": "Vàng / M",
-    "options": [
-     "Vàng",
-     "M"
-    ],
-    "sku": "MAYV1017-M",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/1.jpg"
-   },
-   {
-    "id": 15,
-    "title": "Vàng / L",
-    "options": [
-     "Vàng",
-     "L"
-    ],
-    "sku": "MAYV1017-L",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/1.jpg"
-   },
-   {
-    "id": 16,
-    "title": "Vàng / XL",
-    "options": [
-     "Vàng",
-     "XL"
-    ],
-    "sku": "MAYV1017-XL",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-nhi-vang-dang-dai-mayv1017/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-xanh-nhun-nguc-tay-bong-mayv1016",
-  "title": "Váy xanh nhún ngực tay bồng | MAYV1016",
-  "code": "MAYV1016",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-xanh-nhun-nguc-tay-bong-mayv1016/1.jpg",
-   "/images/products/vay-xanh-nhun-nguc-tay-bong-mayv1016/2.jpg",
-   "/images/products/vay-xanh-nhun-nguc-tay-bong-mayv1016/3.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Xanh"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Xanh",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1016",
-   "- Màu: Xanh",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 17,
-    "title": "Xanh / S",
-    "options": [
-     "Xanh",
-     "S"
-    ],
-    "sku": "MAYV1016-S",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-xanh-nhun-nguc-tay-bong-mayv1016/1.jpg"
-   },
-   {
-    "id": 18,
-    "title": "Xanh / M",
-    "options": [
-     "Xanh",
-     "M"
-    ],
-    "sku": "MAYV1016-M",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-xanh-nhun-nguc-tay-bong-mayv1016/1.jpg"
-   },
-   {
-    "id": 19,
-    "title": "Xanh / L",
-    "options": [
-     "Xanh",
-     "L"
-    ],
-    "sku": "MAYV1016-L",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-xanh-nhun-nguc-tay-bong-mayv1016/1.jpg"
-   },
-   {
-    "id": 20,
-    "title": "Xanh / XL",
-    "options": [
-     "Xanh",
-     "XL"
-    ],
-    "sku": "MAYV1016-XL",
-    "price": 685000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-xanh-nhun-nguc-tay-bong-mayv1016/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-ke-caro-xanh-cai-khuy-mayv1015",
-  "title": "Váy kẻ caro xanh cài khuy | MAYV1015",
-  "code": "MAYV1015",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/1.jpg",
-   "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/2.jpg",
-   "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/3.jpg",
-   "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Kẻ Caro"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Kẻ Caro",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1015",
-   "- Màu: Kẻ Caro",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 21,
-    "title": "Kẻ Caro / S",
-    "options": [
-     "Kẻ Caro",
-     "S"
-    ],
-    "sku": "MAYV1015-S",
     "price": 595000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 10,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "1a6b77e5-4318-4ef0-bb6e-9f9b8662c9b3",
+    "slug": "vay-vang-co-v-dang-xoe-mayv1010",
+    "title": "Váy vàng cổ V dáng xoè",
+    "code": "MAYV1010",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/1.jpg"
-   },
-   {
-    "id": 22,
-    "title": "Kẻ Caro / M",
-    "options": [
-     "Kẻ Caro",
-     "M"
-    ],
-    "sku": "MAYV1015-M",
     "price": 595000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 11,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "9bb6f15a-95ca-4794-a5fb-621b3aaef25d",
+    "slug": "ao-tre-vai-tay-bong-hoa-tiet-maya1009",
+    "title": "Áo trễ vai tay bồng hoạ tiết",
+    "code": "MAYA1009",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/1.jpg"
-   },
-   {
-    "id": 23,
-    "title": "Kẻ Caro / L",
-    "options": [
-     "Kẻ Caro",
-     "L"
-    ],
-    "sku": "MAYV1015-L",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/1.jpg"
-   },
-   {
-    "id": 24,
-    "title": "Kẻ Caro / XL",
-    "options": [
-     "Kẻ Caro",
-     "XL"
-    ],
-    "sku": "MAYV1015-XL",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-ke-caro-xanh-cai-khuy-mayv1015/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "ao-den-co-sen-cai-khuy-lech-maya1014",
-  "title": "Áo đen cổ sen cài khuy lệch | MAYA1014",
-  "code": "MAYA1014",
-  "type": "Áo",
-  "available": true,
-  "images": [
-   "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/1.jpg",
-   "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/2.jpg",
-   "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/3.jpg",
-   "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Đen"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Đen",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYA1014",
-   "- Màu: Đen",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 25,
-    "title": "Đen / S",
-    "options": [
-     "Đen",
-     "S"
-    ],
-    "sku": "MAYA1014-S",
     "price": 495000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 12,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "3d708756-b733-433a-80f2-29a42a6448c7",
+    "slug": "ao-voan-den-xoan-eo-maya1008",
+    "title": "Áo voan đen xoắn eo",
+    "code": "MAYA1008",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/1.jpg"
-   },
-   {
-    "id": 26,
-    "title": "Đen / M",
-    "options": [
-     "Đen",
-     "M"
-    ],
-    "sku": "MAYA1014-M",
     "price": 495000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 13,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "196959f4-4763-411f-8295-66b38e07f754",
+    "slug": "set-ao-peplum-quan-ong-rong-mays1007",
+    "title": "Set áo peplum quần ống rộng",
+    "code": "MAYS1007",
+    "collection": "dong-bo",
+    "is_new": true,
+    "featured": true,
     "available": true,
-    "image": "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/1.jpg"
-   },
-   {
-    "id": 27,
-    "title": "Đen / L",
-    "options": [
-     "Đen",
-     "L"
-    ],
-    "sku": "MAYA1014-L",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/1.jpg"
-   },
-   {
-    "id": 28,
-    "title": "Đen / XL",
-    "options": [
-     "Đen",
-     "XL"
-    ],
-    "sku": "MAYA1014-XL",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-den-co-sen-cai-khuy-lech-maya1014/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-kem-phoi-no-co-mayv1013",
-  "title": "Váy kem phối nơ cổ | MAYV1013",
-  "code": "MAYV1013",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-kem-phoi-no-co-mayv1013/1.jpg",
-   "/images/products/vay-kem-phoi-no-co-mayv1013/2.jpg",
-   "/images/products/vay-kem-phoi-no-co-mayv1013/3.jpg",
-   "/images/products/vay-kem-phoi-no-co-mayv1013/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng Kem"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng Kem",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1013",
-   "- Màu: Trắng Kem",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 29,
-    "title": "Trắng Kem / S",
-    "options": [
-     "Trắng Kem",
-     "S"
-    ],
-    "sku": "MAYV1013-S",
     "price": 695000,
-    "compare": 0,
+    "cover_file": "4.jpg",
+    "order": 14,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "312d0836-f1b1-4f7f-a59d-4693daa40fb9",
+    "slug": "chan-vay-xep-ly-phoi-vat-mayv1006",
+    "title": "Chân váy xếp ly phối vạt",
+    "code": "MAYV1006",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/vay-kem-phoi-no-co-mayv1013/1.jpg"
-   },
-   {
-    "id": 30,
-    "title": "Trắng Kem / M",
-    "options": [
-     "Trắng Kem",
-     "M"
-    ],
-    "sku": "MAYV1013-M",
     "price": 695000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 15,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "1edaa007-7d05-4127-a0dc-247f8f736118",
+    "slug": "quan-ong-rong-xep-ly-xanh-navy-mayq1005",
+    "title": "Quần ống rộng xếp ly xanh navy",
+    "code": "MAYQ1005",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/vay-kem-phoi-no-co-mayv1013/1.jpg"
-   },
-   {
-    "id": 31,
-    "title": "Trắng Kem / L",
-    "options": [
-     "Trắng Kem",
-     "L"
-    ],
-    "sku": "MAYV1013-L",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-kem-phoi-no-co-mayv1013/1.jpg"
-   },
-   {
-    "id": 32,
-    "title": "Trắng Kem / XL",
-    "options": [
-     "Trắng Kem",
-     "XL"
-    ],
-    "sku": "MAYV1013-XL",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-kem-phoi-no-co-mayv1013/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-ao-trang-chan-voan-hong-mayv1012",
-  "title": "Váy áo trắng chân voan hồng | MAYV1012",
-  "code": "MAYV1012",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/1.jpg",
-   "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/2.jpg",
-   "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/3.jpg",
-   "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng Hồng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng Hồng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1012",
-   "- Màu: Trắng Hồng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 33,
-    "title": "Trắng Hồng / S",
-    "options": [
-     "Trắng Hồng",
-     "S"
-    ],
-    "sku": "MAYV1012-S",
-    "price": 625000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/1.jpg"
-   },
-   {
-    "id": 34,
-    "title": "Trắng Hồng / M",
-    "options": [
-     "Trắng Hồng",
-     "M"
-    ],
-    "sku": "MAYV1012-M",
-    "price": 625000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/1.jpg"
-   },
-   {
-    "id": 35,
-    "title": "Trắng Hồng / L",
-    "options": [
-     "Trắng Hồng",
-     "L"
-    ],
-    "sku": "MAYV1012-L",
-    "price": 625000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/1.jpg"
-   },
-   {
-    "id": 36,
-    "title": "Trắng Hồng / XL",
-    "options": [
-     "Trắng Hồng",
-     "XL"
-    ],
-    "sku": "MAYV1012-XL",
-    "price": 625000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-ao-trang-chan-voan-hong-mayv1012/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-hoa-do-vai-beo-mayv1011",
-  "title": "Váy hoa đỏ vai bèo | MAYV1011",
-  "code": "MAYV1011",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-hoa-do-vai-beo-mayv1011/1.jpg",
-   "/images/products/vay-hoa-do-vai-beo-mayv1011/2.jpg",
-   "/images/products/vay-hoa-do-vai-beo-mayv1011/3.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Hoa"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Hoa",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1011",
-   "- Màu: Hoa",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 37,
-    "title": "Hoa / S",
-    "options": [
-     "Hoa",
-     "S"
-    ],
-    "sku": "MAYV1011-S",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-do-vai-beo-mayv1011/1.jpg"
-   },
-   {
-    "id": 38,
-    "title": "Hoa / M",
-    "options": [
-     "Hoa",
-     "M"
-    ],
-    "sku": "MAYV1011-M",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-do-vai-beo-mayv1011/1.jpg"
-   },
-   {
-    "id": 39,
-    "title": "Hoa / L",
-    "options": [
-     "Hoa",
-     "L"
-    ],
-    "sku": "MAYV1011-L",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-do-vai-beo-mayv1011/1.jpg"
-   },
-   {
-    "id": 40,
-    "title": "Hoa / XL",
-    "options": [
-     "Hoa",
-     "XL"
-    ],
-    "sku": "MAYV1011-XL",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-hoa-do-vai-beo-mayv1011/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-vang-co-v-dang-xoe-mayv1010",
-  "title": "Váy vàng cổ V dáng xoè | MAYV1010",
-  "code": "MAYV1010",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-vang-co-v-dang-xoe-mayv1010/1.jpg",
-   "/images/products/vay-vang-co-v-dang-xoe-mayv1010/2.jpg",
-   "/images/products/vay-vang-co-v-dang-xoe-mayv1010/3.jpg",
-   "/images/products/vay-vang-co-v-dang-xoe-mayv1010/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Vàng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Vàng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1010",
-   "- Màu: Vàng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 41,
-    "title": "Vàng / S",
-    "options": [
-     "Vàng",
-     "S"
-    ],
-    "sku": "MAYV1010-S",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-vang-co-v-dang-xoe-mayv1010/1.jpg"
-   },
-   {
-    "id": 42,
-    "title": "Vàng / M",
-    "options": [
-     "Vàng",
-     "M"
-    ],
-    "sku": "MAYV1010-M",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-vang-co-v-dang-xoe-mayv1010/1.jpg"
-   },
-   {
-    "id": 43,
-    "title": "Vàng / L",
-    "options": [
-     "Vàng",
-     "L"
-    ],
-    "sku": "MAYV1010-L",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-vang-co-v-dang-xoe-mayv1010/1.jpg"
-   },
-   {
-    "id": 44,
-    "title": "Vàng / XL",
-    "options": [
-     "Vàng",
-     "XL"
-    ],
-    "sku": "MAYV1010-XL",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-vang-co-v-dang-xoe-mayv1010/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "ao-tre-vai-tay-bong-hoa-tiet-maya1009",
-  "title": "Áo trễ vai tay bồng hoạ tiết | MAYA1009",
-  "code": "MAYA1009",
-  "type": "Áo",
-  "available": true,
-  "images": [
-   "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/1.jpg",
-   "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/2.jpg",
-   "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/3.jpg",
-   "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Kẻ Caro"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Kẻ Caro",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYA1009",
-   "- Màu: Kẻ Caro",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 45,
-    "title": "Kẻ Caro / S",
-    "options": [
-     "Kẻ Caro",
-     "S"
-    ],
-    "sku": "MAYA1009-S",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/1.jpg"
-   },
-   {
-    "id": 46,
-    "title": "Kẻ Caro / M",
-    "options": [
-     "Kẻ Caro",
-     "M"
-    ],
-    "sku": "MAYA1009-M",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/1.jpg"
-   },
-   {
-    "id": 47,
-    "title": "Kẻ Caro / L",
-    "options": [
-     "Kẻ Caro",
-     "L"
-    ],
-    "sku": "MAYA1009-L",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/1.jpg"
-   },
-   {
-    "id": 48,
-    "title": "Kẻ Caro / XL",
-    "options": [
-     "Kẻ Caro",
-     "XL"
-    ],
-    "sku": "MAYA1009-XL",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-tre-vai-tay-bong-hoa-tiet-maya1009/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "ao-voan-den-xoan-eo-maya1008",
-  "title": "Áo voan đen xoắn eo | MAYA1008",
-  "code": "MAYA1008",
-  "type": "Áo",
-  "available": true,
-  "images": [
-   "/images/products/ao-voan-den-xoan-eo-maya1008/1.jpg",
-   "/images/products/ao-voan-den-xoan-eo-maya1008/2.jpg",
-   "/images/products/ao-voan-den-xoan-eo-maya1008/3.jpg",
-   "/images/products/ao-voan-den-xoan-eo-maya1008/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Đen"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Đen",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYA1008",
-   "- Màu: Đen",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 49,
-    "title": "Đen / S",
-    "options": [
-     "Đen",
-     "S"
-    ],
-    "sku": "MAYA1008-S",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-voan-den-xoan-eo-maya1008/1.jpg"
-   },
-   {
-    "id": 50,
-    "title": "Đen / M",
-    "options": [
-     "Đen",
-     "M"
-    ],
-    "sku": "MAYA1008-M",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-voan-den-xoan-eo-maya1008/1.jpg"
-   },
-   {
-    "id": 51,
-    "title": "Đen / L",
-    "options": [
-     "Đen",
-     "L"
-    ],
-    "sku": "MAYA1008-L",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-voan-den-xoan-eo-maya1008/1.jpg"
-   },
-   {
-    "id": 52,
-    "title": "Đen / XL",
-    "options": [
-     "Đen",
-     "XL"
-    ],
-    "sku": "MAYA1008-XL",
-    "price": 495000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/ao-voan-den-xoan-eo-maya1008/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "set-ao-peplum-quan-ong-rong-mays1007",
-  "title": "Set áo peplum quần ống rộng | MAYS1007",
-  "code": "MAYS1007",
-  "type": "Đồng bộ",
-  "available": true,
-  "images": [
-   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg",
-   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/3.jpg",
-   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/2.jpg",
-   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/1.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng Kem"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng Kem",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYS1007",
-   "- Màu: Trắng Kem",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 53,
-    "title": "Trắng Kem / S",
-    "options": [
-     "Trắng Kem",
-     "S"
-    ],
-    "sku": "MAYS1007-S",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
-   },
-   {
-    "id": 54,
-    "title": "Trắng Kem / M",
-    "options": [
-     "Trắng Kem",
-     "M"
-    ],
-    "sku": "MAYS1007-M",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
-   },
-   {
-    "id": 55,
-    "title": "Trắng Kem / L",
-    "options": [
-     "Trắng Kem",
-     "L"
-    ],
-    "sku": "MAYS1007-L",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
-   },
-   {
-    "id": 56,
-    "title": "Trắng Kem / XL",
-    "options": [
-     "Trắng Kem",
-     "XL"
-    ],
-    "sku": "MAYS1007-XL",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
-   }
-  ]
- },
- {
-  "handle": "chan-vay-xep-ly-phoi-vat-mayv1006",
-  "title": "Chân váy xếp ly phối vạt | MAYV1006",
-  "code": "MAYV1006",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/chan-vay-xep-ly-phoi-vat-mayv1006/1.jpg",
-   "/images/products/chan-vay-xep-ly-phoi-vat-mayv1006/2.jpg",
-   "/images/products/chan-vay-xep-ly-phoi-vat-mayv1006/3.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng Kem"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng Kem",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1006",
-   "- Màu: Trắng Kem",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 57,
-    "title": "Trắng Kem / S",
-    "options": [
-     "Trắng Kem",
-     "S"
-    ],
-    "sku": "MAYV1006-S",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/chan-vay-xep-ly-phoi-vat-mayv1006/1.jpg"
-   },
-   {
-    "id": 58,
-    "title": "Trắng Kem / M",
-    "options": [
-     "Trắng Kem",
-     "M"
-    ],
-    "sku": "MAYV1006-M",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/chan-vay-xep-ly-phoi-vat-mayv1006/1.jpg"
-   },
-   {
-    "id": 59,
-    "title": "Trắng Kem / L",
-    "options": [
-     "Trắng Kem",
-     "L"
-    ],
-    "sku": "MAYV1006-L",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/chan-vay-xep-ly-phoi-vat-mayv1006/1.jpg"
-   },
-   {
-    "id": 60,
-    "title": "Trắng Kem / XL",
-    "options": [
-     "Trắng Kem",
-     "XL"
-    ],
-    "sku": "MAYV1006-XL",
-    "price": 695000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/chan-vay-xep-ly-phoi-vat-mayv1006/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "quan-ong-rong-xep-ly-xanh-navy-mayq1005",
-  "title": "Quần ống rộng xếp ly xanh navy | MAYQ1005",
-  "code": "MAYQ1005",
-  "type": "Quần",
-  "available": true,
-  "images": [
-   "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/1.jpg",
-   "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/2.jpg",
-   "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/3.jpg",
-   "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Xanh"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Xanh",
-    "chip": "",
-    "css": "#1f2b46"
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYQ1005",
-   "- Màu: Xanh",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 61,
-    "title": "Xanh / S",
-    "options": [
-     "Xanh",
-     "S"
-    ],
-    "sku": "MAYQ1005-S",
     "price": 545000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 16,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "2552a4a6-2ff1-49b1-92fb-3dc352391c54",
+    "slug": "set-ao-corset-quan-ke-soc-mays1004",
+    "title": "Set áo corset quần kẻ sọc",
+    "code": "MAYS1004",
+    "collection": "dong-bo",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/1.jpg"
-   },
-   {
-    "id": 62,
-    "title": "Xanh / M",
-    "options": [
-     "Xanh",
-     "M"
-    ],
-    "sku": "MAYQ1005-M",
-    "price": 545000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/1.jpg"
-   },
-   {
-    "id": 63,
-    "title": "Xanh / L",
-    "options": [
-     "Xanh",
-     "L"
-    ],
-    "sku": "MAYQ1005-L",
-    "price": 545000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/1.jpg"
-   },
-   {
-    "id": 64,
-    "title": "Xanh / XL",
-    "options": [
-     "Xanh",
-     "XL"
-    ],
-    "sku": "MAYQ1005-XL",
-    "price": 545000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/quan-ong-rong-xep-ly-xanh-navy-mayq1005/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "set-ao-corset-quan-ke-soc-mays1004",
-  "title": "Set áo corset quần kẻ sọc | MAYS1004",
-  "code": "MAYS1004",
-  "type": "Đồng bộ",
-  "available": true,
-  "images": [
-   "/images/products/set-ao-corset-quan-ke-soc-mays1004/1.jpg",
-   "/images/products/set-ao-corset-quan-ke-soc-mays1004/2.jpg",
-   "/images/products/set-ao-corset-quan-ke-soc-mays1004/3.jpg",
-   "/images/products/set-ao-corset-quan-ke-soc-mays1004/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng Kem"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng Kem",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYS1004",
-   "- Màu: Trắng Kem",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 65,
-    "title": "Trắng Kem / S",
-    "options": [
-     "Trắng Kem",
-     "S"
-    ],
-    "sku": "MAYS1004-S",
     "price": 795000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 17,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "c465e293-a54a-46c2-8dcd-d8c81b2e7a6e",
+    "slug": "vay-len-nau-tre-vai-that-eo-mayv1003",
+    "title": "Váy len nâu trễ vai thắt eo",
+    "code": "MAYV1003",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/set-ao-corset-quan-ke-soc-mays1004/1.jpg"
-   },
-   {
-    "id": 66,
-    "title": "Trắng Kem / M",
-    "options": [
-     "Trắng Kem",
-     "M"
-    ],
-    "sku": "MAYS1004-M",
-    "price": 795000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-ao-corset-quan-ke-soc-mays1004/1.jpg"
-   },
-   {
-    "id": 67,
-    "title": "Trắng Kem / L",
-    "options": [
-     "Trắng Kem",
-     "L"
-    ],
-    "sku": "MAYS1004-L",
-    "price": 795000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-ao-corset-quan-ke-soc-mays1004/1.jpg"
-   },
-   {
-    "id": 68,
-    "title": "Trắng Kem / XL",
-    "options": [
-     "Trắng Kem",
-     "XL"
-    ],
-    "sku": "MAYS1004-XL",
-    "price": 795000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/set-ao-corset-quan-ke-soc-mays1004/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-len-nau-tre-vai-that-eo-mayv1003",
-  "title": "Váy len nâu trễ vai thắt eo | MAYV1003",
-  "code": "MAYV1003",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/1.jpg",
-   "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/2.jpg",
-   "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/3.jpg",
-   "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Nâu"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Nâu",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1003",
-   "- Màu: Nâu",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 69,
-    "title": "Nâu / S",
-    "options": [
-     "Nâu",
-     "S"
-    ],
-    "sku": "MAYV1003-S",
     "price": 565000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 18,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "6921497d-5aac-40f0-be56-b2ea1ac0f1f7",
+    "slug": "vay-trang-co-yem-mayv1002",
+    "title": "Váy trắng cổ yếm",
+    "code": "MAYV1002",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/1.jpg"
-   },
-   {
-    "id": 70,
-    "title": "Nâu / M",
-    "options": [
-     "Nâu",
-     "M"
-    ],
-    "sku": "MAYV1003-M",
-    "price": 565000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/1.jpg"
-   },
-   {
-    "id": 71,
-    "title": "Nâu / L",
-    "options": [
-     "Nâu",
-     "L"
-    ],
-    "sku": "MAYV1003-L",
-    "price": 565000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/1.jpg"
-   },
-   {
-    "id": 72,
-    "title": "Nâu / XL",
-    "options": [
-     "Nâu",
-     "XL"
-    ],
-    "sku": "MAYV1003-XL",
-    "price": 565000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-len-nau-tre-vai-that-eo-mayv1003/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-trang-co-yem-mayv1002",
-  "title": "Váy trắng cổ yếm | MAYV1002",
-  "code": "MAYV1002",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-trang-co-yem-mayv1002/1.jpg",
-   "/images/products/vay-trang-co-yem-mayv1002/2.jpg",
-   "/images/products/vay-trang-co-yem-mayv1002/3.jpg",
-   "/images/products/vay-trang-co-yem-mayv1002/4.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Trắng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Trắng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1002",
-   "- Màu: Trắng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 73,
-    "title": "Trắng / S",
-    "options": [
-     "Trắng",
-     "S"
-    ],
-    "sku": "MAYV1002-S",
     "price": 595000,
-    "compare": 0,
+    "cover_file": "1.jpg",
+    "order": 19,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "4c9d76c8-38e6-4eed-8cc6-c337e7215073",
+    "slug": "vay-da-hong-co-lech-mayv1001",
+    "title": "Váy dạ hồng cổ lệch",
+    "code": "MAYV1001",
+    "collection": "mua-he",
+    "is_new": true,
+    "featured": false,
     "available": true,
-    "image": "/images/products/vay-trang-co-yem-mayv1002/1.jpg"
-   },
-   {
-    "id": 74,
-    "title": "Trắng / M",
-    "options": [
-     "Trắng",
-     "M"
-    ],
-    "sku": "MAYV1002-M",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-trang-co-yem-mayv1002/1.jpg"
-   },
-   {
-    "id": 75,
-    "title": "Trắng / L",
-    "options": [
-     "Trắng",
-     "L"
-    ],
-    "sku": "MAYV1002-L",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-trang-co-yem-mayv1002/1.jpg"
-   },
-   {
-    "id": 76,
-    "title": "Trắng / XL",
-    "options": [
-     "Trắng",
-     "XL"
-    ],
-    "sku": "MAYV1002-XL",
-    "price": 595000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-trang-co-yem-mayv1002/1.jpg"
-   }
-  ]
- },
- {
-  "handle": "vay-da-hong-co-lech-mayv1001",
-  "title": "Váy dạ hồng cổ lệch | MAYV1001",
-  "code": "MAYV1001",
-  "type": "Váy",
-  "available": true,
-  "images": [
-   "/images/products/vay-da-hong-co-lech-mayv1001/1.jpg",
-   "/images/products/vay-da-hong-co-lech-mayv1001/2.jpg",
-   "/images/products/vay-da-hong-co-lech-mayv1001/3.jpg"
-  ],
-  "options": [
-   {
-    "name": "Màu sắc",
-    "values": [
-     "Hồng"
-    ]
-   },
-   {
-    "name": "Kích thước",
-    "values": [
-     "S",
-     "M",
-     "L",
-     "XL"
-    ]
-   }
-  ],
-  "colorIndex": 0,
-  "swatches": [
-   {
-    "name": "Hồng",
-    "chip": ""
-   }
-  ],
-  "specs": [
-   "THÔNG TIN SẢN PHẨM",
-   "- Mã sản phẩm: MAYV1001",
-   "- Màu: Hồng",
-   "- Size: S M L XL",
-   "- Chịu trách nhiệm về sản phẩm: Hộ Kinh Doanh Thời Trang May By Mây",
-   "- Hotline tư vấn size: 0327 666 248"
-  ],
-  "variants": [
-   {
-    "id": 77,
-    "title": "Hồng / S",
-    "options": [
-     "Hồng",
-     "S"
-    ],
-    "sku": "MAYV1001-S",
     "price": 650000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-da-hong-co-lech-mayv1001/1.jpg"
-   },
-   {
-    "id": 78,
-    "title": "Hồng / M",
-    "options": [
-     "Hồng",
-     "M"
-    ],
-    "sku": "MAYV1001-M",
-    "price": 650000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-da-hong-co-lech-mayv1001/1.jpg"
-   },
-   {
-    "id": 79,
-    "title": "Hồng / L",
-    "options": [
-     "Hồng",
-     "L"
-    ],
-    "sku": "MAYV1001-L",
-    "price": 650000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-da-hong-co-lech-mayv1001/1.jpg"
-   },
-   {
-    "id": 80,
-    "title": "Hồng / XL",
-    "options": [
-     "Hồng",
-     "XL"
-    ],
-    "sku": "MAYV1001-XL",
-    "price": 650000,
-    "compare": 0,
-    "available": true,
-    "image": "/images/products/vay-da-hong-co-lech-mayv1001/1.jpg"
-   }
-  ]
- }
+    "cover_file": "1.jpg",
+    "order": 20,
+    "created_at": "2026-10-01T00:00:00.000Z",
+    "updated_at": "2026-10-01T00:00:00.000Z"
+  }
 ]

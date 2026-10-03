@@ -5,9 +5,7 @@
   var M = window.Mauve;
 
   /* ---------------- settings: fill these in when they are ready ---------------- */
-  // Where orders are sent (e.g. a Google Apps Script web app ".../exec" URL, like tretrucvn).
-  // Empty = interface only: the order is shown as placed and the cart is emptied, but nothing is sent.
-  var ORDER_ENDPOINT_URL = "";
+  // Orders are sent to API_URL in js/store.js (the CMS). The server re-checks prices and stock.
   // Bank account for transfers. With bankId (VietQR bank code, e.g. "VCB", "MB", "TCB") and account
   // filled in, the demo QR is replaced by a real VietQR code that already contains amount + content.
   var BANK = { bankId: "", bankName: "", account: "", holder: "HO KINH DOANH THOI TRANG MAY BY MAY" };
@@ -161,27 +159,18 @@
     };
   }
 
-  // text/plain avoids a CORS preflight (Google Apps Script cannot answer OPTIONS)
-  function send(data) {
-    if (!ORDER_ENDPOINT_URL) return Promise.resolve({ ok: true, notSent: true });
-    return fetch(ORDER_ENDPOINT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) })
-      .then(function (r) { return r.json(); })
-      .catch(function () { return { ok: false, error: "Không kết nối được máy chủ. Vui lòng thử lại hoặc gọi hotline 0327 666 248." }; });
-  }
-
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!M.cart.get().items.length || !validate()) return;
     var data = payload();
     submitBtn.disabled = true;
     submitBtn.textContent = "Đang gửi đơn…";
-    send(data).then(function (res) {
+    M.post(data).then(function (res) {
       if (!res || !res.ok) {
         showError((res && res.error) || "Đặt hàng chưa thành công, vui lòng thử lại.");
         return;
       }
-      if (res.notSent && window.console) console.info("ORDER_ENDPOINT_URL chưa cấu hình — đơn hàng chưa được gửi đi:", data);
-      document.querySelector(".js-order-code").textContent = orderCode;
+      document.querySelector(".js-order-code").textContent = res.code || orderCode;
       successBox.hidden = false;
       layout.hidden = true;
       M.cart.clear();

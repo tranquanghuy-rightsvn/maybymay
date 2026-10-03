@@ -1,7 +1,0 @@
-div.main-layout [0,73,1440,154] fontSize:14px; lineHeight:21px; color:rgb(33, 37, 41); textAlign:left "      "
-  div#cart-page [0,73,1440,154] fontSize:14px; lineHeight:21px; color:rgb(33, 37, 41); textAlign:left; margin:0px 0px 25px " "
-    div.container.text-center [80,73,1280,154] fontSize:14px; lineHeight:21px; color:rgb(33, 37, 41); textAlign:center; padding:0px 15px; margin:0px 80px; maxWidth:1280px "   "
-      h3.titlecartpage [95,73,1250,78] fontSize:15px; fontWeight:500; fontFamily:mauvesansserif-re; lineHeight:18px; color:rgb(33, 37, 41); textTransform:uppercase; textAlign:center; padding:60px 0px 0px; margin:0px 0px 20px "GIỎ HÀNG"
-      p.cartempty [95,171,1250,21] fontSize:14px; lineHeight:21px; color:rgb(33, 37, 41); textAlign:center; margin:0px 0px 14px "Giỏ hàng của bạn trống"
-      a.ctinueshop [663,207,113,20] display:inline; fontSize:14px; lineHeight:21px; color:rgb(51, 51, 51); textAlign:center "Tiếp tục mua sắm"
-

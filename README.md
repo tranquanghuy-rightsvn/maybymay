@@ -1,46 +1,52 @@
-# Mauve clone (HTML/CSS/JS)
+# May By Mây — website
 
-A hand-written, static rebuild of the mauvevn.com storefront theme for local study and demos.
+Static storefront for Hộ Kinh Doanh Thời Trang May By Mây. Every page is plain HTML; JavaScript only adds behaviour (menus, sliders, size picker, cart). No page loads data with `fetch()`.
 
-## Run
+- `html/` — the website. Deploy this folder as-is to any static host.
+- `data/` — source data: `products.json`, `collections.json`, `pages.json` (info pages, size guide, shipping text).
+- `scripts/build.py` — generates the static pages from `data/`.
 
-Inner pages load catalogue data with `fetch()`, which browsers block on `file://`, so serve the folder:
+## Edit content
+
+1. Change `data/*.json` (and add photos to `html/images/products/<handle>/`).
+2. Run `python3 scripts/build.py` (Python 3, no packages needed).
+
+The build rewrites:
+
+| Output | From |
+|---|---|
+| `html/product/<handle>/index.html` | `data/products.json` |
+| `html/collection/<handle>/index.html` | `data/collections.json` |
+| `html/page/<handle>/index.html` | `data/pages.json` |
+| Home carousels in `html/index.html` (between `<!-- build:<collection> -->` markers) | `san-pham-moi`, `mua-he`, `dong-bo` |
+| `html/js/search-index.js` | product list for the search page |
+| `html/sitemap.xml` | all pages |
+
+Do not edit generated files by hand; the next build overwrites them.
+
+### Adding a product
+
+1. Put photos in `html/images/products/<handle>/1.jpg, 2.jpg, ...`.
+2. Add an entry to `data/products.json` (copy an existing one; change `handle`, `title`, `code`, `images`, `options`, `variants`, `specs`).
+3. Add the handle to `data/collections.json`: `all`; `dong-bo` for sets, otherwise `mua-he`; and `san-pham-moi` if it is new.
+4. Run the build.
+
+## Run locally
 
 ```bash
-python3 -m http.server 5500
+cd html && python3 -m http.server 5500
 # open http://localhost:5500
 ```
 
-`index.html` also works when opened directly.
+## URLs
 
-## Pages
-
-| File | Page |
+| URL | Page |
 |---|---|
-| `index.html` | Home |
-| `collection.html?handle=<handle>` | Collection (53 handles in `data/collections.json`) |
-| `product.html?handle=<handle>` | Product (72 products in `data/products.json`) |
-| `search.html?q=<query>` | Search, accent-insensitive, 12 per page |
-| `cart.html` | Cart (stored in `localStorage`) |
-| `page.html?handle=<handle>` | Content pages: `thuong-hieu`, `bang-kich-co`, `chinh-sach-*`, `phuong-thuc-thanh-toan` |
-| `contact.html` | Contact |
-| `blog.html`, `article.html?handle=<handle>` | Blog |
-| `account.html` | Login / register (demo only) |
-
-## Structure
-
-- `css/style.css`: global tokens, header, footer, home sections, cart sidebar
-- `css/pages.css`: inner-page templates
-- `js/store.js`: routes, money format, data loading, product card, cart and recently-viewed (localStorage)
-- `js/layout.js`: injects the shared header, mobile menu, footer and cart sidebar into every page
-- `js/main.js`: sticky header, menus, search/account/cart toggles, sliders, carousels, footer accordion
-- `js/content.js`: text for content pages, blog and the shipping popup
-- `js/pages/*.js`: one script per template
-- `scripts/fetch-data.mjs`: rebuilds `data/*.json` from the store's public JSON (`node scripts/fetch-data.mjs`)
-- `scripts/compare*.js`: Playwright scripts that compare element boxes against the live site
-
-## Notes
-
-- **Demo only.** Forms (login, register, contact) and the checkout button never send data anywhere.
-- **Brand assets.** Product photos, logo, icons and the MauveSansSerif font are loaded from Mauve's CDN and belong to Mauve. Get permission or replace them before publishing anywhere.
-- **Text content.** The content pages, collection descriptions, blog posts and shipping popup use short summaries written for this clone, not the shop's official copy. Paste the real text into `js/content.js`, or add a `description` field to a collection in `data/collections.json`.
+| `/` | Home |
+| `/collection/<handle>/` | `all`, `san-pham-moi`, `mua-he`, `dong-bo` |
+| `/product/<handle>/` | Product |
+| `/page/<handle>/` | `thuong-hieu`, `bang-kich-co`, `chinh-sach-*`, `phuong-thuc-thanh-toan` |
+| `/search/?q=<query>` | Search |
+| `/cart/` | Cart (stored in `localStorage`) |
+| `/yeu-thich/` | Wishlist — products hearted with ♡ (stored in `localStorage`) |
+| `/contact/` | Contact (form is demo only) |

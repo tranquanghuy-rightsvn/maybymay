@@ -1,0 +1,30 @@
+{
+  "_shared": {
+    "shipping": "<p>May By Mây giao hàng toàn quốc.</p><p>Sau khi đặt hàng, May By Mây sẽ gọi điện hoặc nhắn Zalo để xác nhận đơn, báo phí ship và thời gian giao dự kiến.</p><h3 class=\"accent\">KIỂM TRA HÀNG</h3><ul><li>Khách hàng được mở gói kiểm tra mẫu mã, màu sắc, size và số lượng trước khi thanh toán.</li><li>Nếu có sai sót, vui lòng liên hệ ngay hotline <a href=\"tel:0327666248\">0327 666 248</a> để được hỗ trợ.</li></ul>",
+    "size": "<h3>BẢNG KÍCH CỠ</h3><p>Các mẫu có đủ size: <b>S - M - L - XL</b>.</p><p>Để chọn size vừa nhất, chị gửi chiều cao, cân nặng và số đo (ngực - eo - mông) qua hotline / Zalo <a href=\"tel:0327666248\">0327 666 248</a>, May By Mây sẽ tư vấn size cho từng mẫu.</p>"
+  },
+  "thuong-hieu": {
+    "title": "Giới thiệu",
+    "html": "<p><b>May By Mây</b> — clothing &amp; accessories.</p><p>May By Mây mang đến những mẫu váy, áo, set đồ và quần nữ nhẹ nhàng, dễ mặc, phù hợp đi làm, đi chơi và dạo phố.</p><hr><p>Hộ Kinh Doanh Thời Trang May By Mây</p><p>GPKD do Phòng kinh tế, hạ tầng và đô thị thuộc UBND Phường Hoàng Liệt cấp ngày 05/02/2026</p><p>MST: 038098030181</p><p>Hotline / Zalo: <a href=\"tel:0327666248\">0327 666 248</a></p>"
+  },
+  "bang-kich-co": {
+    "title": "Bảng kích cỡ",
+    "html": "@size"
+  },
+  "chinh-sach-doi-hang": {
+    "title": "Chính sách đổi hàng",
+    "html": "<p>May By Mây hỗ trợ đổi size hoặc đổi mẫu khi sản phẩm:</p><ul><li>Còn nguyên tem mác, chưa qua sử dụng, chưa giặt.</li><li>Không bị hư hỏng do người dùng.</li></ul><h3>Cách thức đổi hàng</h3><p><u>Bước 1:</u> Liên hệ hotline / Zalo <a href=\"tel:0327666248\">0327 666 248</a>, cung cấp thông tin đơn hàng và sản phẩm cần đổi.</p><p><u>Bước 2:</u> Gửi sản phẩm về May By Mây theo hướng dẫn.</p><p><u>Bước 3:</u> May By Mây kiểm tra và gửi sản phẩm mới cho khách.</p><p>Thời hạn và phí đổi hàng được báo cụ thể khi liên hệ.</p>"
+  },
+  "chinh-sach-giao-hang": {
+    "title": "Chính sách giao hàng",
+    "html": "@shipping"
+  },
+  "phuong-thuc-thanh-toan": {
+    "title": "Phương thức thanh toán",
+    "html": "<p>May By Mây nhận thanh toán theo các hình thức:</p><ul><li>Thanh toán khi nhận hàng (COD).</li><li>Chuyển khoản ngân hàng.</li></ul><p>Thông tin chuyển khoản được gửi khi May By Mây xác nhận đơn hàng.</p>"
+  },
+  "chinh-sach-bao-mat": {
+    "title": "Chính sách bảo mật",
+    "html": "<h3>1. Thông tin thu thập</h3><p>Họ tên, số điện thoại, địa chỉ nhận hàng — chỉ để xử lý và giao đơn hàng.</p><h3>2. Phạm vi sử dụng</h3><p>Dùng để xác nhận đơn, giao hàng và chăm sóc khách hàng.</p><h3>3. Bên thứ ba</h3><p>Chỉ chia sẻ với đơn vị vận chuyển để giao hàng.</p><h3>4. Đơn vị quản lý thông tin</h3><p>Hộ Kinh Doanh Thời Trang May By Mây — MST: 038098030181.</p><h3>5. Liên hệ</h3><p>Hotline / Zalo: <a href=\"tel:0327666248\">0327 666 248</a></p>"
+  }
+}

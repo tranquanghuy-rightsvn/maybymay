@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tìm kiếm - May By Mây</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpeg">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body class="page-inner page-search">
+
+<main>
+  <div class="search-page">
+    <div class="container-xl"><ol class="breadcrumb"><li><a href="/">Trang chủ</a></li><li><span>Tìm kiếm</span></li></ol></div>
+    <div class="container-xl">
+      <div class="search-page__wrap">
+        <div class="search-page__head">
+          <h1>Tìm kiếm</h1>
+          <p class="js-search-count"></p>
+        </div>
+        <p class="search-page__result js-search-for"></p>
+        <form class="search-page__form" action="/search/">
+          <input type="text" name="q" class="js-search-input" autocomplete="off">
+          <button type="submit">Tìm kiếm</button>
+        </form>
+        <div class="product-grid js-search-grid"></div>
+        <div class="pagination js-search-pages"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/js/store.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search-index.js"></script>
+<script src="/js/pages/search.js"></script>
+</body>
+</html>

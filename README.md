@@ -61,3 +61,13 @@ At the top of `html/js/pages/checkout.js`:
 
 - `ORDER_ENDPOINT_URL` — where orders are POSTed (e.g. a Google Apps Script web app `/exec` URL). Empty: the page works but orders are not sent anywhere (the order is logged to the browser console).
 - `BANK` — `bankId` (VietQR bank code such as `VCB`, `MB`, `TCB`), `bankName`, `account`, `holder`. When `bankId` and `account` are set, the demo QR (`images/qr-demo.svg`) is replaced by a real VietQR code with the amount and transfer content filled in.
+
+## SEO and sharing
+
+`scripts/build.py` writes the `<head>` of every page (hand-written pages between `<!-- build:head -->` markers):
+
+- title, description, canonical (`https://maybymay.vn/...`, set by `SITE`), Open Graph and Twitter tags; cart / search / checkout / wishlist are `noindex`
+- JSON-LD: `ClothingStore` + `WebSite` (home), `Product` with price, stock and 7-day return policy, `CollectionPage`, `BlogPosting`, `BreadcrumbList`
+- icons: `favicon.ico`, `images/icons/*` (pink "Mây"), `site.webmanifest`
+- share image: `images/og-image.webp` (+ `.jpg` fallback), 1200×630
+- `robots.txt` and `sitemap.xml`

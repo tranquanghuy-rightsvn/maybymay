@@ -70,16 +70,119 @@ def price_of(p):
     return v["price"]
 
 
-def shell(title, body_class, main, scripts, description="", canonical="", image="", pages_css=True):
-    head_extra = ""
-    if description:
-        head_extra += f'  <meta name="description" content="{esc(description)}">\n'
-    if canonical:
-        head_extra += f'  <link rel="canonical" href="{SITE}{canonical}">\n'
-        head_extra += f'  <meta property="og:title" content="{esc(title)}">\n'
-        head_extra += f'  <meta property="og:url" content="{SITE}{canonical}">\n'
-    if image:
-        head_extra += f'  <meta property="og:image" content="{SITE}{image}">\n'
+BRAND = "May By Mây"
+SHOP = "Hộ Kinh Doanh Thời Trang May By Mây"
+OG_IMAGE = "/images/og-image.webp"          # social share banner, 1200x630
+OG_IMAGE_FALLBACK = "/images/og-image.jpg"  # same banner for crawlers that do not read WebP
+STORE_ID = SITE + "/#store"
+DEFAULT_DESC = "May By Mây – thời trang nữ: váy, áo, set đồ đồng bộ thanh lịch, dễ mặc. Đủ size S–XL, kiểm tra hàng trước khi thanh toán. Hotline / Zalo 0327 666 248."
+
+
+def absu(path):
+    return path if path.startswith("http") else SITE + path
+
+
+def store_ld():
+    prices = [price_of(p) for p in products]
+    return {
+        "@type": "ClothingStore",
+        "@id": STORE_ID,
+        "name": BRAND,
+        "legalName": SHOP,
+        "url": SITE + "/",
+        "logo": absu("/images/logo.jpeg"),
+        "image": absu(OG_IMAGE),
+        "description": DEFAULT_DESC,
+        "telephone": "+84327666248",
+        "taxID": "038098030181",
+        "address": {"@type": "PostalAddress", "addressLocality": "Phường Hoàng Liệt",
+                    "addressRegion": "Thành phố Hà Nội", "addressCountry": "VN"},
+        "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
+                                       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                                       "opens": "08:00", "closes": "21:00"}],
+        "priceRange": f"{money(min(prices))} – {money(max(prices))}",
+        "currenciesAccepted": "VND",
+        "paymentAccepted": "Tiền mặt (COD), Chuyển khoản ngân hàng",
+        "contactPoint": {"@type": "ContactPoint", "telephone": "+84327666248", "contactType": "customer service",
+                         "availableLanguage": "vi"},
+    }
+
+
+def website_ld():
+    return {
+        "@type": "WebSite",
+        "@id": SITE + "/#website",
+        "url": SITE + "/",
+        "name": BRAND,
+        "inLanguage": "vi-VN",
+        "publisher": {"@id": STORE_ID},
+        "potentialAction": {"@type": "SearchAction", "target": SITE + "/search/?q={search_term_string}",
+                            "query-input": "required name=search_term_string"},
+    }
+
+
+def breadcrumb_ld(trail):
+    """trail: [(name, path), ...] starting after the home page."""
+    items = [("Trang chủ", "/")] + trail
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": absu(u)} for i, (n, u) in enumerate(items)]}
+
+
+def head_meta(title, description="", path="", image="", og_type="website", robots="", jsonld=(), og_extra=()):
+    """<head> tags shared by every page: SEO meta, canonical, Open Graph / Twitter, icons, JSON-LD."""
+    description = description or DEFAULT_DESC
+    image = absu(image or OG_IMAGE)
+    url = absu(path) if path else ""
+    lines = [f"<title>{esc(title)}</title>",
+             f'<meta name="description" content="{esc(description)}">']
+    if robots:
+        lines.append(f'<meta name="robots" content="{robots}">')
+    elif url:
+        lines.append(f'<link rel="canonical" href="{url}">')
+    lines += [
+        f'<meta property="og:site_name" content="{BRAND}">',
+        '<meta property="og:locale" content="vi_VN">',
+        f'<meta property="og:type" content="{og_type}">',
+        f'<meta property="og:title" content="{esc(title)}">',
+        f'<meta property="og:description" content="{esc(description)}">',
+    ]
+    if url:
+        lines.append(f'<meta property="og:url" content="{url}">')
+    # each og:image is followed by its own type / size / alt (Open Graph structured properties)
+    lines.append(f'<meta property="og:image" content="{image}">')
+    if image.endswith(OG_IMAGE):
+        lines += ['<meta property="og:image:type" content="image/webp">',
+                  '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">']
+    lines.append(f'<meta property="og:image:alt" content="{esc(title)}">')
+    if image.endswith(OG_IMAGE):
+        lines += [f'<meta property="og:image" content="{absu(OG_IMAGE_FALLBACK)}">',
+                  '<meta property="og:image:type" content="image/jpeg">',
+                  '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">']
+    lines += [
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{esc(title)}">',
+        f'<meta name="twitter:description" content="{esc(description)}">',
+        f'<meta name="twitter:image" content="{image}">',
+    ]
+    lines += [f'<meta property="{k}" content="{esc(v)}">' for k, v in og_extra]
+    lines += [
+        '<meta name="theme-color" content="#fdfdfa">',
+        '<link rel="icon" href="/favicon.ico" sizes="48x48">',
+        '<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32.png">',
+        '<link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16.png">',
+        '<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">',
+        '<link rel="manifest" href="/site.webmanifest">',
+    ]
+    if jsonld:
+        data = {"@context": "https://schema.org", "@graph": list(jsonld)}
+        lines.append('<script type="application/ld+json">' +
+                     json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>")
+    return "".join("  " + l + "\n" for l in lines)
+
+
+def shell(title, body_class, main, scripts, description="", canonical="", image="", pages_css=True,
+          og_type="website", jsonld=(), og_extra=(), robots=""):
+    head_extra = head_meta(title, description, canonical, image, og_type, robots, jsonld, og_extra)
     css = '  <link rel="stylesheet" href="/css/style.css">\n'
     if pages_css:
         css += '  <link rel="stylesheet" href="/css/pages.css">\n'
@@ -89,11 +192,9 @@ def shell(title, body_class, main, scripts, description="", canonical="", image=
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{esc(title)}</title>
 {head_extra}  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/jpeg" href="/images/logo.jpeg">
 {css}</head>
 <body class="{body_class}">
 
@@ -298,8 +399,41 @@ def product_page(p):
     )
     color_text = f" Màu {color}." if color else ""
     desc = f"{p['title']} - {money(price_of(p))}.{color_text} Size {' '.join(p['options'][size_idx]['values']) if size_idx >= 0 else ''}. Hotline 0327 666 248."
+    col_crumb = next((c for h, c in collections.items() if h in ("dong-bo", "mua-he") and p["handle"] in c["products"]), collections["all"])
+    product_ld = {
+        "@type": "Product",
+        "@id": absu(product_url(p["handle"])) + "#product",
+        "name": p["title"],
+        "description": desc,
+        "image": [absu(i) for i in p["images"]],
+        "sku": p.get("code", first["sku"]),
+        "brand": {"@type": "Brand", "name": BRAND},
+        "category": p.get("type", ""),
+        "color": color,
+        "size": p["options"][size_idx]["values"] if size_idx >= 0 else [],
+        "offers": {
+            "@type": "Offer",
+            "url": absu(product_url(p["handle"])),
+            "priceCurrency": "VND",
+            "price": price_of(p),
+            "availability": "https://schema.org/InStock" if p.get("available", True) else "https://schema.org/OutOfStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {"@id": STORE_ID},
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "VN",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+            },
+        },
+    }
+    crumbs = breadcrumb_ld([(col_crumb["title"], collection_url(col_crumb["handle"])), (p["title"], product_url(p["handle"]))])
     return shell(p["title"] + " – May By Mây", "page-inner page-product", main, ["/js/pages/product.js"],
-                 description=desc, canonical=product_url(p["handle"]), image=p["images"][0])
+                 description=desc, canonical=product_url(p["handle"]), image=p["images"][0], og_type="product",
+                 og_extra=(("product:price:amount", str(price_of(p))), ("product:price:currency", "VND"),
+                           ("product:availability", "in stock"), ("product:brand", BRAND)),
+                 jsonld=(product_ld, crumbs, {"@id": STORE_ID, **store_ld()}))
 
 
 def collection_page(c):
@@ -312,8 +446,19 @@ def collection_page(c):
         "  </div>"
     )
     first = by_handle[c["products"][0]]["images"][0] if c["products"] else ""
+    desc = f"{c['title']} – {len(c['products'])} mẫu thời trang nữ May By Mây, đủ size S–XL, giá từ {money(min(price_of(by_handle[h]) for h in c['products']))}. Hotline / Zalo 0327 666 248."
+    item_list = {
+        "@type": "CollectionPage",
+        "name": c["title"],
+        "url": absu(collection_url(c["handle"])),
+        "isPartOf": {"@id": SITE + "/#website"},
+        "mainEntity": {"@type": "ItemList", "numberOfItems": len(c["products"]), "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "url": absu(product_url(h)), "name": by_handle[h]["title"]}
+            for i, h in enumerate(c["products"]) if h in by_handle]},
+    }
     return shell("May By Mây – " + c["title"], "page-inner page-collection", main, [],
-                 description=f"{c['title']} - May By Mây. Hotline 0327 666 248.", canonical=collection_url(c["handle"]), image=first)
+                 description=desc, canonical=collection_url(c["handle"]), image=first,
+                 jsonld=(item_list, breadcrumb_ld([(c["title"], collection_url(c["handle"]))])))
 
 
 def info_page(handle, pg):
@@ -323,8 +468,13 @@ def info_page(handle, pg):
         f'        <div class="page-content">{shared_html(pg["html"])}</div>\n'
         "      </div>\n    </div>\n  </div>"
     )
+    text = re.sub(r"<[^>]+>", " ", shared_html(pg["html"]))
+    text = re.sub(r"Cập nhật lần cuối: [\d/]+", "", re.sub(r"\s+", " ", text)).strip()
+    desc = (text[:155].rsplit(" ", 1)[0] + "…") if len(text) > 160 else text
     return shell("May By Mây – " + pg["title"], "page-inner page-page", main, [],
-                 description=f"{pg['title']} - May By Mây.", canonical=page_url(handle))
+                 description=desc, canonical=page_url(handle),
+                 jsonld=({"@type": "WebPage", "name": pg["title"], "url": absu(page_url(handle)), "isPartOf": {"@id": SITE + "/#website"}},
+                         breadcrumb_ld([(pg["title"], page_url(handle))])))
 
 
 def write(path, text):
@@ -390,8 +540,17 @@ def blog_list_page(active, posts_, title, intro):
     )
     canonical = blog_cat_url(active) if active else blog_url()
     page_title = "Blog – May By Mây" if not active else f"{title} – Blog May By Mây"
+    blog_ld = {
+        "@type": "Blog" if not active else "CollectionPage",
+        "name": title if active else "Blog May By Mây",
+        "url": absu(canonical),
+        "publisher": {"@id": STORE_ID},
+        "blogPost" if not active else "hasPart": [{"@type": "BlogPosting", "headline": x["title"], "url": absu(blog_url(x["slug"])),
+                                                  "datePublished": x["date"]} for x in posts_],
+    }
+    trail = [("Blog", blog_url())] + ([(title, canonical)] if active else [])
     return shell(page_title, "page-inner page-blog", main, [], description=intro, canonical=canonical,
-                 image=posts_[0]["cover"] if posts_ else "")
+                 image=posts_[0]["cover"] if posts_ else "", jsonld=(blog_ld, breadcrumb_ld(trail)))
 
 
 def post_page(post):
@@ -423,8 +582,24 @@ def post_page(post):
         "  </article>\n"
         f'  <div class="post-related">{related}</div>'
     )
+    posting = {
+        "@type": "BlogPosting",
+        "headline": post["title"],
+        "description": post["excerpt"],
+        "image": [absu(post["cover"])],
+        "datePublished": post["date"],
+        "dateModified": post.get("updated", post["date"]),
+        "articleSection": cat["title"],
+        "inLanguage": "vi-VN",
+        "author": {"@type": "Organization", "name": BRAND, "url": SITE + "/"},
+        "publisher": {"@type": "Organization", "name": BRAND, "logo": {"@type": "ImageObject", "url": absu("/images/logo.jpeg")}},
+        "mainEntityOfPage": absu(blog_url(post["slug"])),
+    }
+    crumbs = breadcrumb_ld([("Blog", blog_url()), (cat["title"], blog_cat_url(cat["handle"])), (post["title"], blog_url(post["slug"]))])
     return shell(post["title"] + " – Blog May By Mây", "page-inner page-post", main, [],
-                 description=post["excerpt"], canonical=blog_url(post["slug"]), image=post["cover"])
+                 description=post["excerpt"], canonical=blog_url(post["slug"]), image=post["cover"], og_type="article",
+                 og_extra=(("article:published_time", post["date"]), ("article:section", cat["title"])),
+                 jsonld=(posting, crumbs))
 
 
 blog_items = [("index.html", blog_list_page("", blog_posts, "Blog",
@@ -452,7 +627,7 @@ def fill(m):
     return f"<!-- build:{handle} -->{cards}<!-- /build:{handle} -->"
 
 
-text, n = re.subn(r"<!-- build:([a-z0-9-]+) -->.*?<!-- /build:\1 -->", fill, text, flags=re.S)
+text, n = re.subn(r"<!-- build:(?!head\b)([a-z0-9-]+) -->.*?<!-- /build:\1 -->", fill, text, flags=re.S)
 if n == 0:
     raise SystemExit("index.html: no build markers found")
 write(home, text)
@@ -461,6 +636,32 @@ write(home, text)
 index = [card_data(p) for p in products]
 write(OUT / "js" / "search-index.js",
       "/* Generated by scripts/build.py — do not edit. */\nwindow.SEARCH_INDEX = " + json.dumps(index, ensure_ascii=False) + ";\n")
+
+# hand-written pages: fill their <head> (between <!-- build:head --> markers) with the shared tags
+STATIC_PAGES = {
+    "index.html": dict(title="May By Mây – Thời trang nữ thiết kế: váy, áo, set đồ đồng bộ", path="/",
+                       jsonld=(store_ld(), website_ld())),
+    "contact/index.html": dict(title="May By Mây – Liên hệ", path="/contact/",
+                               description="Liên hệ May By Mây: hotline / Zalo 0327 666 248, 8:00 – 21:00 mỗi ngày. Hộ Kinh Doanh Thời Trang May By Mây, MST 038098030181, Phường Hoàng Liệt, Hà Nội.",
+                               jsonld=({"@type": "ContactPage", "name": "Liên hệ", "url": SITE + "/contact/", "about": {"@id": STORE_ID}},
+                                       store_ld(), breadcrumb_ld([("Liên hệ", "/contact/")]))),
+    "cart/index.html": dict(title="Giỏ hàng – May By Mây", robots="noindex, follow"),
+    "search/index.html": dict(title="Tìm kiếm – May By Mây", robots="noindex, follow"),
+    "thanh-toan/index.html": dict(title="Thanh toán – May By Mây", robots="noindex, follow"),
+    "yeu-thich/index.html": dict(title="Sản phẩm yêu thích – May By Mây", robots="noindex, follow"),
+}
+for rel, meta in STATIC_PAGES.items():
+    f = OUT / rel
+    text = f.read_text(encoding="utf-8")
+    block = head_meta(meta["title"], meta.get("description", ""), meta.get("path", ""), "", "website",
+                      meta.get("robots", ""), meta.get("jsonld", ()))
+    text, n = re.subn(r"  <!-- build:head -->.*?<!-- /build:head -->\n",
+                      lambda m: "  <!-- build:head -->\n" + block + "  <!-- /build:head -->\n", text, flags=re.S)
+    if n != 1:
+        raise SystemExit(f"{rel}: build:head markers not found")
+    write(f, text)
+
+write(OUT / "robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 
 # Vietnam provinces + wards (2-level, 34 provinces) for the checkout address pickers,
 # shipped as a plain script so the checkout page needs no fetch()

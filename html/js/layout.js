@@ -13,6 +13,8 @@
     { title: "LIÊN HỆ", url: R.contact() }
   ];
 
+  var NAV_SPLIT = Math.ceil(MENU.length / 2);   // items left of the logo
+
   function isActive(url) {
     // the Blog item stays active on every post and category page
     if (url === R.blog() && location.pathname.indexOf(R.blog()) === 0) return true;
@@ -68,7 +70,9 @@
       '<div class="header-bottom"><div class="header-bottom__inner">' +
         '<div class="header-logo"><a class="logo" href="' + R.home() + '" aria-label="May By Mây"><img src="/images/logo.jpeg" alt="May By Mây - clothing &amp; accessories" width="72" height="72"></a></div>' +
         '<button class="burger" type="button" aria-label="Menu" aria-expanded="false" data-toggle="menu"><span class="burger__box" aria-hidden="true"><span></span><span></span><span></span></span></button>' +
-        '<nav class="nav" aria-label="Main"><ul class="nav__list">' + MENU.map(navItem).join("") + "</ul></nav>" +
+        // desktop: menu split in two halves around the centred logo (mobile uses the burger menu)
+        '<nav class="nav nav--left" aria-label="Menu chính"><ul class="nav__list">' + MENU.slice(0, NAV_SPLIT).map(navItem).join("") + "</ul></nav>" +
+        '<nav class="nav nav--right" aria-label="Menu chính (tiếp)"><ul class="nav__list">' + MENU.slice(NAV_SPLIT).map(navItem).join("") + "</ul></nav>" +
         '<div class="header-icons">' +
           '<div class="search-wrap">' +
             '<a href="#" class="header-icon" data-toggle="search" aria-label="Tìm kiếm"><svg><use href="#i-search"/></svg></a>' +

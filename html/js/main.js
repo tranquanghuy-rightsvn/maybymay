@@ -33,7 +33,6 @@
   function closeAll() {
     body.classList.remove("cart-open", "menu-open", "no-scroll");
     $(".burger").setAttribute("aria-expanded", "false");
-    $(".cart-note").classList.remove("is-active");
   }
 
   function initToggles() {
@@ -68,13 +67,6 @@
       if (c) {
         e.preventDefault();
         closeAll();
-        return;
-      }
-
-      var note = e.target.closest("[data-note]");
-      if (note) {
-        e.preventDefault();
-        $(".cart-note").classList.toggle("is-active", note.getAttribute("data-note") === "open");
       }
     });
 
@@ -169,31 +161,84 @@
     var track = $(".hero__track", hero);
     var slides = $$(".hero__slide", hero);
     var dotsWrap = $(".hero__dots", hero);
-    var index = 0;
-    var timer;
+    var count = slides.length;
+    var index = 0;     // real slide 0..count-1
+    var busy = false;  // ignore clicks while a slide is moving
+    var timer, settleTimer;
+
+    // infinite loop: [copy of last] 1 2 3 [copy of first]; after sliding onto a copy we jump,
+    // without animation, to the real slide it copies, so 3 -> 1 keeps moving forward.
+    function cloneOf(slide) {
+      var c = slide.cloneNode(true);
+      c.classList.remove("is-active");
+      c.setAttribute("aria-hidden", "true");
+      $$("a", c).forEach(function (a) { a.setAttribute("tabindex", "-1"); });
+      $$("img", c).forEach(function (img) { img.removeAttribute("fetchpriority"); });
+      return c;
+    }
+    if (count > 1) {
+      track.insertBefore(cloneOf(slides[count - 1]), slides[0]);
+      track.appendChild(cloneOf(slides[0]));
+    }
+    var offset = count > 1 ? 1 : 0;
+
+    // decode every slide (and copy) up front so sliding never flashes a blank, not-yet-decoded image
+    $$("img", hero).forEach(function (img) {
+      if (img.decode) img.decode().catch(function () {});
+    });
+
+    function moveTo(pos, animate) {
+      track.style.transition = animate ? "" : "none";
+      track.style.transform = "translateX(" + (-100 * pos) + "%)";
+      if (!animate) track.getBoundingClientRect(); // apply the jump before re-enabling the transition
+    }
 
     dotsWrap.innerHTML = slides.map(function (_, i) {
-      return '<li><button type="button" class="' + (i === 0 ? "is-active" : "") + '" aria-label="Slide ' + (i + 1) + '">' + (i + 1) + "</button></li>";
+      return '<li><button type="button" class="' + (i === 0 ? "is-active" : "") + '" aria-label="Slide ' + (i + 1) + '"></button></li>';
     }).join("");
     var dots = $$("button", dotsWrap);
 
-    function go(i) {
-      index = (i + slides.length) % slides.length;
-      track.style.transform = "translateX(" + (-100 * index) + "%)";
+    function mark() {
       slides.forEach(function (s, k) { s.classList.toggle("is-active", k === index); });
       dots.forEach(function (d, k) { d.classList.toggle("is-active", k === index); });
     }
-    function play() { clearInterval(timer); timer = setInterval(function () { go(index + 1); }, 5000); }
 
-    dots.forEach(function (d, i) { d.addEventListener("click", function () { go(i); play(); }); });
+    // step: -1 / +1 for prev / next; or jump straight to a slide with go(null, i)
+    function go(step, target) {
+      if (busy || count < 2) return;
+      var pos = target == null ? index + step : target;
+      if (pos === index) return;
+      busy = true;
+      index = (pos + count) % count;
+      mark();
+      moveTo(pos + offset, true);
+      // backup in case transitionend never fires (e.g. the tab is in the background)
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(settle, 900);
+    }
+
+    function settle() {
+      clearTimeout(settleTimer);
+      moveTo(index + offset, false); // snaps from a copy back onto the real slide (no-op otherwise)
+      busy = false;
+    }
+    track.addEventListener("transitionend", function (e) {
+      if (e.target === track) settle();
+    });
+
+    moveTo(offset, false);
+    function play() { clearInterval(timer); timer = setInterval(function () { go(1); }, 5000); }
+
+    dots.forEach(function (d, i) { d.addEventListener("click", function () { go(null, i); play(); }); });
     $$("[data-hero-step]", hero).forEach(function (b) {
-      b.addEventListener("click", function () { go(index + Number(b.getAttribute("data-hero-step"))); play(); });
+      b.addEventListener("click", function () { go(Number(b.getAttribute("data-hero-step"))); play(); });
     });
     hero.addEventListener("mouseenter", function () { clearInterval(timer); });
     hero.addEventListener("mouseleave", play);
-    addSwipe(hero, function (dir) { go(index + dir); play(); });
+    addSwipe(hero, function (dir) { go(dir); play(); });
     play();
   }
+
 
 
   /* ------------------------------------------------------------------ */
@@ -261,7 +306,8 @@
       if (w <= 1024) return show[1];
       return show[0];
     }
-    function slideW() { return Math.ceil(viewport.clientWidth / perView()); }
+    // whole cards only: no partly visible "next" card at the edge
+    function slideW() { return viewport.clientWidth / perView(); }
     function isNative() { return window.innerWidth <= 767; }
     function items() { return Array.prototype.slice.call(track.children); }
     function maxIndex() { return Math.max(0, Math.ceil(items().length - perView())); }

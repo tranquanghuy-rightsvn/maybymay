@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://maybymay.vn/</loc></url>
   <url><loc>https://maybymay.vn/contact/</loc></url>
+  <url><loc>https://maybymay.vn/blog/</loc></url>
   <url><loc>https://maybymay.vn/collection/all/</loc></url>
   <url><loc>https://maybymay.vn/collection/san-pham-moi/</loc></url>
   <url><loc>https://maybymay.vn/collection/mua-he/</loc></url>
@@ -27,9 +28,17 @@
   <url><loc>https://maybymay.vn/product/vay-trang-co-yem-mayv1002/</loc></url>
   <url><loc>https://maybymay.vn/product/vay-da-hong-co-lech-mayv1001/</loc></url>
   <url><loc>https://maybymay.vn/page/thuong-hieu/</loc></url>
+  <url><loc>https://maybymay.vn/page/huong-dan-mua-hang/</loc></url>
   <url><loc>https://maybymay.vn/page/bang-kich-co/</loc></url>
   <url><loc>https://maybymay.vn/page/chinh-sach-doi-hang/</loc></url>
   <url><loc>https://maybymay.vn/page/chinh-sach-giao-hang/</loc></url>
   <url><loc>https://maybymay.vn/page/phuong-thuc-thanh-toan/</loc></url>
   <url><loc>https://maybymay.vn/page/chinh-sach-bao-mat/</loc></url>
+  <url><loc>https://maybymay.vn/page/dieu-khoan-dich-vu/</loc></url>
+  <url><loc>https://maybymay.vn/blog/chuyen-muc/meo-phoi-do/</loc></url>
+  <url><loc>https://maybymay.vn/blog/chuyen-muc/tin-tuc-thoi-trang/</loc></url>
+  <url><loc>https://maybymay.vn/blog/chuyen-muc/cham-soc-trang-phuc/</loc></url>
+  <url><loc>https://maybymay.vn/blog/5-cach-phoi-vay-hoa-nhi-mua-he/</loc></url>
+  <url><loc>https://maybymay.vn/blog/xu-huong-thoi-trang-nu-he-2026/</loc></url>
+  <url><loc>https://maybymay.vn/blog/cach-giat-va-bao-quan-vay-voan-lua-linen/</loc></url>
 </urlset>

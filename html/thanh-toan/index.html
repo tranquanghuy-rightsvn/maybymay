@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanh toán - May By Mây</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpeg">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body class="page-inner page-checkout">
+
+<main>
+  <div class="container-xl checkout">
+    <h1 class="checkout__title">Thanh toán</h1>
+
+    <div class="checkout__empty" id="checkout-empty" hidden>
+      <p>Giỏ hàng của bạn đang trống.</p>
+      <a class="btn-checkout" href="/collection/san-pham-moi/">Xem sản phẩm mới</a>
+    </div>
+
+    <div class="checkout__layout" id="checkout-layout">
+      <form class="checkout__form" id="checkout-form" novalidate>
+        <!-- honeypot: real visitors never see or fill this -->
+        <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="checkout__hp">
+
+        <h2 class="checkout__h2">Thông tin người nhận</h2>
+        <div class="checkout__grid">
+          <label class="field-box"><span>Họ và tên *</span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="field-box"><span>Số điện thoại *</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
+          <label class="field-box checkout__full"><span>Email (không bắt buộc)</span><input type="email" name="email" autocomplete="email"></label>
+          <label class="field-box"><span>Tỉnh / Thành phố *</span><select name="province" id="province-select" required><option value="">Chọn Tỉnh / Thành phố</option></select></label>
+          <label class="field-box"><span>Phường / Xã *</span><select name="ward" id="ward-select" required disabled><option value="">Chọn Tỉnh / Thành trước</option></select></label>
+          <label class="field-box checkout__full"><span>Địa chỉ cụ thể *</span><input type="text" name="address" autocomplete="street-address" placeholder="Số nhà, tên đường, toà nhà…" required></label>
+          <label class="field-box checkout__full"><span>Ghi chú đơn hàng</span><textarea name="note" rows="3" placeholder="Ví dụ: giao giờ hành chính, gọi trước khi giao…"></textarea></label>
+        </div>
+
+        <h2 class="checkout__h2">Phương thức thanh toán</h2>
+        <div class="pay-methods">
+          <label class="pay-option">
+            <input type="radio" name="payment" value="cod" checked>
+            <span class="pay-option__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9.5v5M18 9.5v5"/></svg></span>
+            <span class="pay-option__text"><b>Thanh toán khi nhận hàng (COD)</b><small>Kiểm tra hàng rồi trả tiền mặt cho nhân viên giao hàng.</small></span>
+          </label>
+          <label class="pay-option">
+            <input type="radio" name="payment" value="bank">
+            <span class="pay-option__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18M12 3 3 8h18l-9-5Z"/></svg></span>
+            <span class="pay-option__text"><b>Chuyển khoản ngân hàng (quét mã QR)</b><small>Quét mã QR bằng ứng dụng ngân hàng, số tiền được điền sẵn.</small></span>
+          </label>
+          <div class="pay-bank" id="pay-bank" hidden>
+            <div class="pay-bank__qr">
+              <img src="/images/qr-demo.svg" alt="Mã QR chuyển khoản (minh hoạ)" width="180" height="180">
+              <span class="pay-bank__badge">QR minh hoạ</span>
+            </div>
+            <dl class="pay-bank__info">
+              <dt>Ngân hàng</dt><dd class="js-bank-name">Đang cập nhật</dd>
+              <dt>Số tài khoản</dt><dd class="js-bank-account">Đang cập nhật</dd>
+              <dt>Chủ tài khoản</dt><dd class="js-bank-holder">Hộ Kinh Doanh Thời Trang May By Mây</dd>
+              <dt>Số tiền</dt><dd><b class="js-bank-amount">0đ</b></dd>
+              <dt>Nội dung</dt><dd><b class="js-bank-content">MBM</b></dd>
+            </dl>
+          </div>
+        </div>
+
+        <label class="pay-confirm" id="pay-confirm" hidden>
+          <input type="checkbox" name="paid"> Tôi đã chuyển khoản đúng số tiền và nội dung ở trên
+        </label>
+
+        <p class="checkout__error" id="checkout-error" role="alert" hidden></p>
+        <button type="submit" class="btn-checkout checkout__submit" id="checkout-submit">Đặt hàng</button>
+        <p class="checkout__terms">Bằng việc đặt hàng, bạn đồng ý với <a href="/page/dieu-khoan-dich-vu/">Điều khoản dịch vụ</a> và <a href="/page/chinh-sach-bao-mat/">Chính sách bảo mật</a> của May By Mây.</p>
+      </form>
+
+      <aside class="checkout__summary">
+        <h2 class="checkout__h2">Đơn hàng của bạn</h2>
+        <div class="checkout__items" id="checkout-items"></div>
+        <div class="checkout__row"><span>Tạm tính</span><span class="js-subtotal">0đ</span></div>
+        <div class="checkout__row"><span>Phí giao hàng</span><span>Báo khi xác nhận đơn</span></div>
+        <div class="checkout__row checkout__row--total"><span>Tổng cộng</span><b class="js-total">0đ</b></div>
+        <a class="checkout__back" href="/cart/">‹ Quay lại giỏ hàng</a>
+      </aside>
+    </div>
+
+    <div class="checkout__success" id="checkout-success" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="m7.8 12.3 2.8 2.8 5.6-5.8"/></svg>
+      <h2>Đặt hàng thành công!</h2>
+      <p>Mã đơn hàng: <b class="js-order-code"></b></p>
+      <p>Cảm ơn bạn đã mua sắm tại May By Mây. Chúng tôi sẽ gọi điện hoặc nhắn Zalo để xác nhận đơn hàng và báo phí giao hàng trong thời gian sớm nhất.</p>
+      <p>Cần hỗ trợ ngay? Hotline / Zalo <a href="tel:0327666248">0327 666 248</a></p>
+      <a class="btn-checkout" href="/">Về trang chủ</a>
+    </div>
+  </div>
+</main>
+
+<script src="/js/store.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/vn-area.js"></script>
+<script src="/js/pages/checkout.js"></script>
+</body>
+</html>

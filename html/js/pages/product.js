@@ -62,6 +62,8 @@
   function update() {
     var v = currentVariant();
     root.querySelectorAll("[data-color]").forEach(function (el) { el.classList.toggle("is-active", el.getAttribute("data-color") === state.color); });
+    var colorName = root.querySelector(".js-color-name");
+    if (colorName) colorName.textContent = state.color || "";
     root.querySelectorAll("[data-size]").forEach(function (el) {
       var s = el.getAttribute("data-size");
       el.classList.toggle("is-active", s === state.size);

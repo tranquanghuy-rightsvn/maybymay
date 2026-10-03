@@ -5,6 +5,7 @@ Writes into html/:
   product/<handle>/index.html     one page per product
   collection/<handle>/index.html  one page per collection
   page/<handle>/index.html        info pages (policies, size guide, about)
+  blog/...                        blog list, category pages and posts (data/posts.json)
   index.html                      fills the home carousels between <!-- build:<collection> --> markers
   js/search-index.js              product list used by the search page
   sitemap.xml
@@ -27,6 +28,7 @@ RELATED_ORDER = ["dong-bo", "mua-he"]
 products = json.loads((DATA / "products.json").read_text(encoding="utf-8"))
 collections = json.loads((DATA / "collections.json").read_text(encoding="utf-8"))
 pages = json.loads((DATA / "pages.json").read_text(encoding="utf-8"))
+blog = json.loads((DATA / "posts.json").read_text(encoding="utf-8"))
 shared = pages.pop("_shared")
 by_handle = {p["handle"]: p for p in products}
 
@@ -49,6 +51,14 @@ def collection_url(h):
 
 def page_url(h):
     return f"/page/{h}/"
+
+
+def blog_url(slug=None):
+    return f"/blog/{slug}/" if slug else "/blog/"
+
+
+def blog_cat_url(h):
+    return f"/blog/chuyen-muc/{h}/"
 
 
 def shared_html(value):
@@ -105,7 +115,6 @@ def card_data(p):
         "t": p["title"],
         "u": product_url(p["handle"]),
         "i1": p["images"][0],
-        "i2": p["images"][1] if len(p["images"]) > 1 else p["images"][0],
         "p": price_of(p),
         "c": p["variants"][0]["options"][color_idx] if color_idx >= 0 else "",
         "v": [[v["options"][size_idx] if size_idx >= 0 else v["title"], v["id"]] for v in p["variants"] if v["available"]],
@@ -121,12 +130,14 @@ def card(p):
         f'<div class="pro-loop" data-card="{data}"><div class="pro-loop__wrap">'
         f'<div class="pro-loop__image"><a href="{d["u"]}">'
         f'<img class="img-1" src="{d["i1"]}" alt="{t}" loading="lazy">'
-        f'<img class="img-2" src="{d["i2"]}" alt="" loading="lazy">'
         "</a>"
         '<button type="button" class="pro-loop__fav" data-fav aria-label="Yêu thích" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>'
-        '<div class="pro-loop__quick">'
-        '<button type="button" class="pro-loop__add" data-quick-open>+ Thêm vào giỏ</button>'
-        f'<div class="pro-loop__sizes"><span>Chọn size</span>{sizes}</div>'
+        '<div class="pro-loop__overlay">'
+        '<div class="pro-loop__actions">'
+        '<button type="button" class="pro-loop__btn" data-quick-open><svg><use href="#i-bag"/></svg><span>Thêm vào giỏ</span></button>'
+        f'<a class="pro-loop__btn" href="{d["u"]}"><svg><use href="#i-eye"/></svg><span>Xem chi tiết</span></a>'
+        "</div>"
+        f'<div class="pro-loop__sizes"><span>Chọn size</span><div>{sizes}</div></div>'
         "</div></div>"
         f'<h3 class="pro-loop__name"><a href="{d["u"]}" title="{t}">{t}</a></h3>'
         f'<div class="pro-loop__price"><strong>{money(d["p"])}</strong></div>'
@@ -141,7 +152,7 @@ def carousel_section(title, items):
     return (
         '<section class="product__related">'
         f'<div class="section-head"><h2>{title}</h2></div>'
-        '<div class="carousel" data-carousel data-show="4.5,3,2.2">'
+        '<div class="carousel" data-carousel data-show="4,3,2">'
         '<button type="button" class="carousel__arrow carousel__arrow--prev" aria-label="Previous"><svg><use href="#i-left"/></svg></button>'
         f'<div class="carousel__viewport"><div class="carousel__track">{cards}</div></div>'
         '<button type="button" class="carousel__arrow carousel__arrow--next" aria-label="Next"><svg><use href="#i-right"/></svg></button>'
@@ -152,8 +163,8 @@ def carousel_section(title, items):
 def popup(name, cls, body):
     return (
         f'<div class="side-popup {cls}" data-popup="{name}">'
-        '<button type="button" class="side-popup__close" data-popup-close aria-label="Đóng"><svg viewBox="24 24 52 52"><use href="#i-x"/></svg></button>'
-        f'<div class="side-popup__body">{body}</div></div>'
+        '<button type="button" class="side-popup__close" data-popup-close aria-label="Đóng"><svg><use href="#i-x"/></svg></button>'
+        f'<div class="side-popup__body page-content">{body}</div></div>'
     )
 
 
@@ -163,6 +174,27 @@ def specs_html(p):
         is_heading = re.fullmatch(r"[A-ZÀ-Ỹ\s]+", line) and len(line) < 40
         out.append(f"<h3>{esc(line)}</h3>" if is_heading else f"<p>{esc(line)}</p>")
     return "".join(out) or "<p>Đang cập nhật.</p>"
+
+
+# colour name -> CSS background for the round colour picker (a swatch may override it with "css")
+COLOR_CSS = {
+    "trắng": "#ffffff",
+    "trắng kem": "#efe6d2",
+    "trắng hồng": "linear-gradient(135deg, #ffffff 50%, #f0c3cd 50%)",
+    "đen": "#1c1c1c",
+    "vàng": "#ecd36a",
+    "xanh": "#a9c3e3",
+    "nâu": "#5e3a2a",
+    "hồng": "#efc4c9",
+    "kẻ caro": "linear-gradient(90deg, rgba(74, 102, 168, 0.55) 50%, transparent 0) 0 0 / 8px 8px, "
+               "linear-gradient(rgba(74, 102, 168, 0.55) 50%, #ffffff 0) 0 0 / 8px 8px",
+    "hoa": "radial-gradient(circle, #b8323a 0 28%, transparent 30%) 0 0 / 9px 9px, "
+           "radial-gradient(circle, #d9737b 0 22%, transparent 24%) 4.5px 4.5px / 9px 9px, #f7efe4",
+}
+
+
+def color_css(swatch):
+    return swatch.get("css") or COLOR_CSS.get(swatch["name"].strip().lower(), "#cccccc")
 
 
 def option_index(p, pattern):
@@ -198,12 +230,11 @@ def product_page(p):
     if color_idx >= 0:
         chips = ""
         for s in p["swatches"]:
-            v = next((v for v in p["variants"] if v["options"][color_idx] == s["name"] and v.get("image")), None)
-            bg = f"background-image:url({s['chip']})" if s.get("chip") else (f"background-image:url({v['image']})" if v else "background:#ccc")
+            bg = f"background:{color_css(s)}"
             active = " is-active" if s["name"] == color else ""
             chips += f'<span class="sw-item sw-item--color{active}" data-color="{esc(s["name"])}" title="{esc(s["name"])}"><span style="{bg}"></span></span>'
         color_line = (
-            f'<div class="sw-line sw-line--color"><div class="sw-title"><b>{esc(p["options"][color_idx]["name"])}</b>'
+            f'<div class="sw-line sw-line--color"><div class="sw-title"><b>{esc(p["options"][color_idx]["name"])}: <span class="js-color-name">{esc(color)}</span></b>'
             f'<p>Màu sản phẩm thật giống hình ảnh đến 99%</p></div><div class="sw-select">{chips}</div></div>'
         )
 
@@ -314,6 +345,100 @@ rebuild_dir("product", [(p["handle"], product_page(p)) for p in products])
 rebuild_dir("collection", [(h, collection_page(c)) for h, c in collections.items()])
 rebuild_dir("page", [(h, info_page(h, pg)) for h, pg in pages.items()])
 
+# ---------------- blog ----------------
+blog_cats = {c["handle"]: c for c in blog["categories"]}
+blog_posts = sorted(blog["posts"], key=lambda x: x["date"], reverse=True)
+
+
+def vn_date(iso):
+    y, m, d = iso.split("-")
+    return f"{d}/{m}/{y}"
+
+
+def post_card(post):
+    cat = blog_cats[post["category"]]
+    url = blog_url(post["slug"])
+    return (
+        '<article class="post-card">'
+        f'<a class="post-card__img" href="{url}"><img src="{post["cover"]}" alt="{esc(post["title"])}" loading="lazy"></a>'
+        '<div class="post-card__body">'
+        f'<p class="post-meta"><a href="{blog_cat_url(cat["handle"])}">{esc(cat["title"])}</a><span>{vn_date(post["date"])}</span></p>'
+        f'<h2 class="post-card__title"><a href="{url}">{esc(post["title"])}</a></h2>'
+        f'<p class="post-card__excerpt">{esc(post["excerpt"])}</p>'
+        f'<a class="post-card__more" href="{url}">Đọc tiếp ›</a>'
+        "</div></article>"
+    )
+
+
+def blog_tabs(active):
+    tabs = [("", "Tất cả", blog_url())] + [(c["handle"], c["title"], blog_cat_url(c["handle"])) for c in blog["categories"]]
+    on = ' class="is-active" aria-current="page"'
+    return '<nav class="blog-tabs" aria-label="Chuyên mục">' + "".join(
+        f'<a href="{u}"{on if h == active else ""}>{esc(t)}</a>' for h, t, u in tabs
+    ) + "</nav>"
+
+
+def blog_list_page(active, posts_, title, intro):
+    grid = "".join(post_card(x) for x in posts_) or '<p class="collection__empty">Chưa có bài viết.</p>'
+    main = (
+        '  <div class="blog">\n'
+        f'    <h1 class="blog__title">{esc(title)}</h1>\n'
+        f'    <p class="blog__intro">{esc(intro)}</p>\n'
+        f'    {blog_tabs(active)}\n'
+        f'    <div class="post-grid">{grid}</div>\n'
+        "  </div>"
+    )
+    canonical = blog_cat_url(active) if active else blog_url()
+    page_title = "Blog – May By Mây" if not active else f"{title} – Blog May By Mây"
+    return shell(page_title, "page-inner page-blog", main, [], description=intro, canonical=canonical,
+                 image=posts_[0]["cover"] if posts_ else "")
+
+
+def post_page(post):
+    cat = blog_cats[post["category"]]
+    others = [x for x in blog_posts if x["slug"] != post["slug"]][:3]
+    by_code = {p["code"]: p for p in products}
+    featured = [by_code[c] for c in blog.get("featured", []) if c in by_code]   # same list under every post
+    related = ""
+    if featured:
+        related += (
+            '<section class="post-products"><h2 class="post-section-title">Sản phẩm nổi bật</h2>'
+            f'<div class="product-grid post-products__grid">{"".join(card(p) for p in featured)}</div></section>'
+        )
+    if others:
+        related += (
+            '<section class="post-more"><h2 class="post-section-title">Bài viết khác</h2>'
+            f'<div class="post-grid post-grid--small">{"".join(post_card(x) for x in others)}</div></section>'
+        )
+    main = (
+        '  <article class="post">\n'
+        '    <nav class="breadcrumb-trail" aria-label="Đường dẫn">'
+        f'<a href="/">Trang chủ</a><span>/</span><a href="{blog_url()}">Blog</a><span>/</span>'
+        f'<a href="{blog_cat_url(cat["handle"])}">{esc(cat["title"])}</a></nav>\n'
+        f'    <p class="post-meta"><a href="{blog_cat_url(cat["handle"])}">{esc(cat["title"])}</a><span>{vn_date(post["date"])}</span><span>May By Mây</span></p>\n'
+        f'    <h1 class="post__title">{esc(post["title"])}</h1>\n'
+        f'    <p class="post__lead">{esc(post["excerpt"])}</p>\n'
+        f'    <img class="post__cover" src="{post["cover"]}" alt="{esc(post["title"])}">\n'
+        f'    <div class="post__content page-content">{post["html"]}</div>\n'
+        "  </article>\n"
+        f'  <div class="post-related">{related}</div>'
+    )
+    return shell(post["title"] + " – Blog May By Mây", "page-inner page-post", main, [],
+                 description=post["excerpt"], canonical=blog_url(post["slug"]), image=post["cover"])
+
+
+blog_items = [("index.html", blog_list_page("", blog_posts, "Blog",
+               "Mẹo phối đồ, tin tức thời trang và cách chăm sóc trang phục từ May By Mây."))]
+for c in blog["categories"]:
+    blog_items.append((f"chuyen-muc/{c['handle']}/index.html",
+                       blog_list_page(c["handle"], [x for x in blog_posts if x["category"] == c["handle"]], c["title"], c["description"])))
+for x in blog_posts:
+    blog_items.append((f"{x['slug']}/index.html", post_page(x)))
+if (OUT / "blog").exists():
+    shutil.rmtree(OUT / "blog")
+for rel, text in blog_items:
+    write(OUT / "blog" / rel, text)
+
 # home: one carousel per collection, between <!-- build:<handle> --> markers
 home = OUT / "index.html"
 text = home.read_text(encoding="utf-8")
@@ -337,10 +462,23 @@ index = [card_data(p) for p in products]
 write(OUT / "js" / "search-index.js",
       "/* Generated by scripts/build.py — do not edit. */\nwindow.SEARCH_INDEX = " + json.dumps(index, ensure_ascii=False) + ";\n")
 
+# Vietnam provinces + wards (2-level, 34 provinces) for the checkout address pickers,
+# shipped as a plain script so the checkout page needs no fetch()
+area = []
+for prov in json.loads((DATA / "area" / "provinces.json").read_text(encoding="utf-8")):
+    wards = json.loads((DATA / "area" / "wards" / f"{prov['code']}.json").read_text(encoding="utf-8"))
+    area.append({"n": prov["name"], "w": sorted((w["name"] for w in wards), key=str.lower)})
+FIRST = ["Thành phố Hà Nội", "Thành phố Hồ Chí Minh"]   # most orders: list them first
+area.sort(key=lambda p: (FIRST.index(p["n"]) if p["n"] in FIRST else len(FIRST), p["n"]))
+write(OUT / "js" / "vn-area.js",
+      "/* Generated by scripts/build.py from data/area — do not edit. */\nwindow.VN_AREA = "
+      + json.dumps(area, ensure_ascii=False, separators=(",", ":")) + ";\n")
+
 # sitemap
-urls = ["/", "/contact/"] + [collection_url(h) for h in collections] + [product_url(p["handle"]) for p in products] + [page_url(h) for h in pages]
+urls = (["/", "/contact/", blog_url()] + [collection_url(h) for h in collections] + [product_url(p["handle"]) for p in products]
+        + [page_url(h) for h in pages] + [blog_cat_url(c["handle"]) for c in blog["categories"]] + [blog_url(x["slug"]) for x in blog_posts])
 write(OUT / "sitemap.xml",
       '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
       + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 
-print(f"products: {len(products)}, collections: {len(collections)}, pages: {len(pages)}")
+print(f"products: {len(products)}, collections: {len(collections)}, pages: {len(pages)}, blog posts: {len(blog_posts)}")

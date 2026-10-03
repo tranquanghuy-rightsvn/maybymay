@@ -12,7 +12,9 @@
     page: function (h) { return "/page/" + h + "/"; },
     search: function (q) { return "/search/?q=" + encodeURIComponent(q || ""); },
     contact: function () { return "/contact/"; },
+    blog: function () { return "/blog/"; },
     cart: function () { return "/cart/"; },
+    checkout: function () { return "/thanh-toan/"; },
     wishlist: function () { return "/yeu-thich/"; }
   };
 
@@ -30,12 +32,8 @@
     });
   }
 
-  function chipUrl(file) {
-    return file || "";
-  }
-
   /* ---------------- product card (search results, wishlist) ---------------- */
-  // item = card data { h, t, u, i1, i2, p, c, v: [[size, variantId], ...] }; same markup as scripts/build.py
+  // item = card data { h, t, u, i1, p, c, v: [[size, variantId], ...] }; same markup as scripts/build.py
   function card(item) {
     var t = esc(item.t);
     var sizes = (item.v || []).map(function (v) {
@@ -44,12 +42,14 @@
     return '<div class="pro-loop" data-card="' + esc(JSON.stringify(item)) + '"><div class="pro-loop__wrap">' +
       '<div class="pro-loop__image"><a href="' + item.u + '">' +
         '<img class="img-1" src="' + item.i1 + '" alt="' + t + '" loading="lazy">' +
-        '<img class="img-2" src="' + item.i2 + '" alt="" loading="lazy">' +
       "</a>" +
       '<button type="button" class="pro-loop__fav" data-fav aria-label="Yêu thích" aria-pressed="false"><svg><use href="#i-heart"/></svg></button>' +
-      '<div class="pro-loop__quick">' +
-        '<button type="button" class="pro-loop__add" data-quick-open>+ Thêm vào giỏ</button>' +
-        '<div class="pro-loop__sizes"><span>Chọn size</span>' + sizes + "</div>" +
+      '<div class="pro-loop__overlay">' +
+        '<div class="pro-loop__actions">' +
+          '<button type="button" class="pro-loop__btn" data-quick-open><svg><use href="#i-bag"/></svg><span>Thêm vào giỏ</span></button>' +
+          '<a class="pro-loop__btn" href="' + item.u + '"><svg><use href="#i-eye"/></svg><span>Xem chi tiết</span></a>' +
+        "</div>" +
+        '<div class="pro-loop__sizes"><span>Chọn size</span><div>' + sizes + "</div></div>" +
       "</div></div>" +
       '<h3 class="pro-loop__name"><a href="' + item.u + '" title="' + t + '">' + t + "</a></h3>" +
       '<div class="pro-loop__price"><strong>' + money(item.p) + "</strong></div>" +
@@ -86,7 +86,8 @@
       c.items = c.items.filter(function (i) { return i.id !== id; });
       writeCart(c);
     },
-    setNote: function (note) { var c = readCart(); c.note = note; writeCart(c); }
+    setNote: function (note) { var c = readCart(); c.note = note; writeCart(c); },
+    clear: function () { writeCart({ items: [], note: "" }); }
   };
 
   /* ---------------- wishlist (localStorage) ---------------- */
@@ -117,7 +118,6 @@
     money: money,
     param: param,
     esc: esc,
-    chipUrl: chipUrl,
     card: card,
     cart: cart,
     wishlist: wishlist

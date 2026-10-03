@@ -1291,10 +1291,10 @@
   "type": "Đồng bộ",
   "available": true,
   "images": [
-   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/1.jpg",
-   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/2.jpg",
+   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg",
    "/images/products/set-ao-peplum-quan-ong-rong-mays1007/3.jpg",
-   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
+   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/2.jpg",
+   "/images/products/set-ao-peplum-quan-ong-rong-mays1007/1.jpg"
   ],
   "options": [
    {
@@ -1340,7 +1340,7 @@
     "price": 695000,
     "compare": 0,
     "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/1.jpg"
+    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
    },
    {
     "id": 54,
@@ -1353,7 +1353,7 @@
     "price": 695000,
     "compare": 0,
     "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/1.jpg"
+    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
    },
    {
     "id": 55,
@@ -1366,7 +1366,7 @@
     "price": 695000,
     "compare": 0,
     "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/1.jpg"
+    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
    },
    {
     "id": 56,
@@ -1379,7 +1379,7 @@
     "price": 695000,
     "compare": 0,
     "available": true,
-    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/1.jpg"
+    "image": "/images/products/set-ao-peplum-quan-ong-rong-mays1007/4.jpg"
    }
   ]
  },
@@ -1514,7 +1514,8 @@
   "swatches": [
    {
     "name": "Xanh",
-    "chip": ""
+    "chip": "",
+    "css": "#1f2b46"
    }
   ],
   "specs": [

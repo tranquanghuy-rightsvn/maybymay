@@ -407,6 +407,50 @@ button { font: inherit; cursor: pointer; background: none; border: 0; padding: 0
 .hero__slide { flex: 0 0 100%; min-width: 0; }
 .hero__slide picture { display: block; }
 .hero__slide img { display: block; width: 100%; height: auto; }
+.hero__slide a { position: relative; display: block; }
+/* caption on the empty left side of each slide: script brand name + tagline */
+.hero__caption {
+  position: absolute;
+  top: 50%;
+  left: 8.5%;
+  max-width: 38%;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.25);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.hero__brand {
+  display: block;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(40px, 6.2vw, 120px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+.hero__tagline {
+  display: block;
+  margin-top: clamp(6px, 0.9vw, 16px);
+  padding-left: 0.2em;
+  font-family: var(--font-re);
+  font-size: clamp(11px, 1.15vw, 21px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55), 0 0 2px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+/* tablet + phone crops are filled by the models: caption bottom-left over a soft dark fade */
+@media (max-width: 1199px) {
+  .hero__slide a::after {
+    content: "";
+    position: absolute;
+    inset: 45% 0 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent);
+    pointer-events: none;
+  }
+  .hero__caption { top: auto; bottom: 44px; left: 40px; z-index: 1; max-width: calc(100% - 80px); transform: none; }
+  .hero__brand { font-size: clamp(44px, 7vw, 80px); }
+  .hero__tagline { font-size: 13px; }
+}
 .hero__arrow {
   position: absolute;
   top: 50%;
@@ -883,6 +927,9 @@ button { font: inherit; cursor: pointer; background: none; border: 0; padding: 0
   .hero__dots { bottom: 8px; gap: 6px; padding: 5px 8px; }
   .hero__dots button { width: 6px; height: 6px; }
   .hero__dots button.is-active { width: 20px; }
+  .hero__caption { bottom: 30px; left: 16px; max-width: calc(100% - 32px); }
+  .hero__brand { font-size: clamp(34px, 10vw, 52px); }
+  .hero__tagline { margin-top: 2px; font-size: 10px; letter-spacing: 0.16em; }
 
   .section-head h2 { width: 60%; padding-left: 5px; font-size: 14px; line-height: 16.8px; }
   .btn-more {

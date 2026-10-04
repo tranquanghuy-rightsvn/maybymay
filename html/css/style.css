@@ -1006,5 +1006,8 @@ button { font: inherit; cursor: pointer; background: none; border: 0; padding: 0
 @media (max-width: 575px) {
   .pro-loop__sizes > div { gap: 4px; }
   .pro-loop__sizes button { width: 30px; height: 30px; font-size: 12px; }
+}
+/* narrow + mouse: shorter text buttons. Touch screens keep the round icon buttons from (hover: none) */
+@media (max-width: 575px) and (hover: hover) {
   .pro-loop__btn { width: 140px; height: 36px; font-size: 11px; }
 }

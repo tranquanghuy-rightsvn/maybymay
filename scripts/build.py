@@ -202,6 +202,7 @@ def store_ld():
         "paymentAccepted": "Tiền mặt (COD), Chuyển khoản ngân hàng",
         "contactPoint": {"@type": "ContactPoint", "telephone": "+84327666248", "contactType": "customer service",
                          "availableLanguage": "vi"},
+        "sameAs": ["https://www.facebook.com/maybymay.offcial"],
     }
 
 

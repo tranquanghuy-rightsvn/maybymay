@@ -43,6 +43,10 @@
     '<symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 8h13l-1 12.5h-11L5.5 8Z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></symbol>' +
     '<symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></symbol>' +
     '<symbol id="i-heart" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 20.3S3.5 15.1 3.5 9.1A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.5c0 6-8.5 11.2-8.5 11.2Z"/></symbol>' +
+    '<symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.4 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.6V21z"/></symbol>' +
+    '<symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 3h-3v12.2a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.6a5.7 5.7 0 1 0 4.8 5.6V9.1a7.3 7.3 0 0 0 4.2 1.3V7.4A4.3 4.3 0 0 1 16.6 3z"/></symbol>' +
+    '<symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></symbol>' +
+    '<symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><circle cx="16.9" cy="7.1" r="0.6" fill="currentColor" stroke="none"/></symbol>' +
     "</svg>";
 
   function navItem(item) {
@@ -94,6 +98,20 @@
     return '<div class="footer__menu">' + list.map(function (l) { return '<a href="' + l[1] + '">' + l[0] + "</a>"; }).join("") + "</div>";
   }
 
+  // social icons under KẾT NỐI; an empty url shows the icon without a link (not set up yet)
+  var SOCIAL = [
+    ["Facebook", "facebook", "https://www.facebook.com/maybymay.offcial"],
+    ["TikTok", "tiktok", ""],
+    ["Instagram", "instagram", ""],
+    ["YouTube", "youtube", ""]
+  ];
+  function social() {
+    return '<div class="footer__social">' + SOCIAL.map(function (s) {
+      var href = s[2] ? ' href="' + s[2] + '" target="_blank" rel="noopener"' : "";
+      return "<a" + href + ' aria-label="' + s[0] + '" title="' + s[0] + '"><svg aria-hidden="true"><use href="#i-' + s[1] + '"/></svg></a>';
+    }).join("") + "</div>";
+  }
+
   var footer =
     '<footer class="footer"><div class="footer__main"><div class="footer__content"><div class="footer__cols">' +
       footerCol("GIỚI THIỆU", links([["Giới thiệu", R.page("thuong-hieu")], ["Blog", R.blog()], ["Liên hệ", R.contact()]])) +
@@ -111,7 +129,7 @@
         ["Chính sách bảo mật", R.page("chinh-sach-bao-mat")],
         ["Điều khoản dịch vụ", R.page("dieu-khoan-dich-vu")]
       ])) +
-      footerCol("KẾT NỐI", links([["Hotline: 0327 666 248", "tel:0327666248"], ["Zalo: 0327 666 248", "https://zalo.me/0327666248"]])) +
+      footerCol("KẾT NỐI", links([["Hotline: 0327 666 248", "tel:0327666248"], ["Zalo: 0327 666 248", "https://zalo.me/0327666248"]]) + social()) +
       '<div class="footer__col footer__col--info">' +
         '<a class="footer__logo" href="' + R.home() + '" aria-label="May By Mây"><img src="/images/logo.jpeg" alt="May By Mây - clothing &amp; accessories" width="96" height="96" loading="lazy"></a>' +
         '<div class="footer__info">' +

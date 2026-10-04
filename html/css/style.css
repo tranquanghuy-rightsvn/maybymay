@@ -807,8 +807,20 @@ button { font: inherit; cursor: pointer; background: none; border: 0; padding: 0
   border-bottom: 1px solid transparent;
 }
 .footer__menu a:hover { color: var(--link); border-bottom-color: var(--link); }
-.footer__social { display: flex; gap: 10px; }
-.footer__social img { width: 26px; height: 26px; }
+.footer__social { display: flex; gap: 10px; margin-top: 14px; }
+.footer__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: #fff;
+  background: #000;
+  border-radius: 50%;
+  transition: opacity 0.2s;
+}
+.footer__social a[href]:hover { opacity: 0.75; }
+.footer__social svg { width: 18px; height: 18px; }
 .footer__logo { display: inline-block; margin-bottom: 12px; }
 .footer__logo img { display: block; width: 96px; height: 96px; }
 .footer__info p { margin-bottom: 5px; }

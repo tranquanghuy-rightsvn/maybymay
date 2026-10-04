@@ -208,6 +208,7 @@ def store_ld():
 def website_ld():
     return {
         "@type": "WebSite",
+        "creator": {"@type": "Organization", "@id": "https://web100.vn/#organization", "name": "Web100", "url": "https://web100.vn/"},
         "@id": SITE + "/#website",
         "url": SITE + "/",
         "name": BRAND,
